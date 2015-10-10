@@ -15,7 +15,7 @@ public class Notebook {
 				return;
 			}
 		}
-		throw new IndexOutOfBoundsException("Блокнот заполнен");
+		throw new IndexOutOfBoundsException("Notepad is full");
 	}
 
 	/**
@@ -23,7 +23,7 @@ public class Notebook {
 	 */
 	public void delEntry(int index) {
 		if (index >= notebook.length || index < 0)
-			throw new IndexOutOfBoundsException("Элемент с указанными номером не найден");
+			throw new IndexOutOfBoundsException("Element with this index not found");
 
 		notebook[index] = null;
 	}
@@ -34,7 +34,7 @@ public class Notebook {
 	 */
 	public void Editentry(int index, String text) {
 		if (index >= notebook.length || index < 0)
-			throw new IndexOutOfBoundsException("Элемент с указанными номером не найден");
+			throw new IndexOutOfBoundsException("Element with this index not found");
 
 		notebook[index] = new Entry(text);
 	}
@@ -63,7 +63,7 @@ public class Notebook {
 	 */
 	public Notebook(int size) {
 		if (size <= 0)
-			throw new IllegalArgumentException("Недопустимый размер блокнота");
+			throw new IllegalArgumentException("Invalid size notebook");
 
 		notebook = new Entry[size];
 	}

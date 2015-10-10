@@ -10,7 +10,6 @@ public class Entry {
 		return entry;
 	}
 
-	
 	/**
 	 * @param text recording in current entry
 	 */
