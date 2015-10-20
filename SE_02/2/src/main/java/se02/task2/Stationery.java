@@ -22,4 +22,12 @@ abstract public class Stationery {
 		this.price = price;
 	}
 
+	public Stationery(int count, int price) {
+		this.count = count;
+		this.price = price;
+	}
+
+	public Stationery() {
+	}
+
 }

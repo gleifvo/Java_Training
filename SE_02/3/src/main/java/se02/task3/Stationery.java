@@ -19,6 +19,14 @@ abstract public class Stationery {
 		this.count = count;
 	}
 
+	public Stationery(int count, int price) {
+		this.count = count;
+		this.price = price;
+	}
+
+	public Stationery() {
+	}
+
 	public int getPrice() {
 		return price;
 	}
@@ -26,6 +34,5 @@ abstract public class Stationery {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
 
 }

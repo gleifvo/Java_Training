@@ -11,16 +11,14 @@ public class Pen extends Stationery {
 		setCount(1);
 	}
 
-	public Pen(int price, int count) {
-		setPrice(price);
-
-		setCount(count);
-	}
-
 	public Pen(int count) {
 		setPrice(defaultPrice);
 
 		setCount(count);
+	}
+
+	public Pen(int count, int price) {
+		super(count, price);
 	}
 
 }

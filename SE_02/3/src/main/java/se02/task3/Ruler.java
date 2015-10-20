@@ -1,6 +1,6 @@
 package se02.task3;
 
-public class Ruler extends Stationery{
+public class Ruler extends Stationery {
 
 	private int defaultPrice = 250;
 
@@ -10,15 +10,13 @@ public class Ruler extends Stationery{
 		setCount(1);
 	}
 
-	public Ruler(int price, int count) {
-		setPrice(price);
-
-		setCount(count);
-	}
-
 	public Ruler(int count) {
 		setPrice(defaultPrice);
 
 		setCount(count);
+	}
+
+	public Ruler(int count, int price) {
+		super(count, price);
 	}
 }

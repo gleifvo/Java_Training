@@ -10,10 +10,8 @@ public class Paper extends Stationery {
 		setCount(1);
 	}
 
-	public Paper(int price, int count) {
-		setPrice(price);
-
-		setCount(count);
+	public Paper(int count, int price) {
+		super(count, price);
 	}
 
 	public Paper(int count) {
