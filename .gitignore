@@ -47,3 +47,6 @@ SE_02/5/.settings/org.eclipse.jdt.core.prefs
 SE_02/5/.settings/org.eclipse.m2e.core.prefs
 SE_02/7/.classpath
 SE_02/7/.project
+*.classpath
+*.project
+*.prefs
