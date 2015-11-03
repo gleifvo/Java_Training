@@ -22,9 +22,7 @@ public class KeywordsCounter {
 
 		for (String element : list) {
 
-			element = element.replaceAll("\\p{Punct}|\\p{Space}", " ");
-
-			String[] substrings = element.split(" ");
+			String[] substrings = element.split("\\p{Punct}|\\p{Space}");
 
 			for (String string : substrings) {
 				if (JavaUtils.isJavaKeyword(string)) {
