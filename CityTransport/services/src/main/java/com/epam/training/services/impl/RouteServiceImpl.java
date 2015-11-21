@@ -14,7 +14,7 @@ public class RouteServiceImpl implements RouteService {
 
 	@Override
 	public void insertOrUpdate(Route route) {
-		if (routeDao.getById(route.getId()) == null) {
+		if (route.getId() == null) {
 			routeDao.insert(route);
 		} else {
 			routeDao.update(route);

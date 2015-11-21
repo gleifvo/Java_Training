@@ -12,7 +12,7 @@ public class TransportTypeServiceImpl implements TransportTypeService {
 
 	@Override
 	public void insertOrUpdate(TransportType transportType) {
-		if (transportTypeDao.getById(transportType.getId()) == null) {
+		if (transportType.getId() == null) {
 			transportTypeDao.insert(transportType);
 		} else {
 			transportTypeDao.update(transportType);

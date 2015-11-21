@@ -34,10 +34,9 @@ public class TransportTypeDaoImpl implements TransportTypeDao {
 				transportType.getType(), transportType.getCapacity(),
 				transportType.getMaxSpeed(), transportType.getId());
 	}
-	
+
 	@Override
 	public void delete(Long id) {
-		jdbcTemplate.update("DELETE FROM transport_type WHERE id = ?",
-				id);		
+		jdbcTemplate.update("DELETE FROM transport_type WHERE id = ?", id);
 	}
 }

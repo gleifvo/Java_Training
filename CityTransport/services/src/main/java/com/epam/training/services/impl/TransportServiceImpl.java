@@ -15,7 +15,7 @@ public class TransportServiceImpl implements TransportService {
 
 	@Override
 	public void insertOrUpdate(Transport transport) {
-		if (transportDao.getById(transport.getId()) == null) {
+		if (transport.getId() == null) {
 			transportDao.insert(transport);
 		} else {
 			transportDao.update(transport);
