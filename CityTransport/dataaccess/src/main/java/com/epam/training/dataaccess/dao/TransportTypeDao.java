@@ -1,14 +1,20 @@
 package com.epam.training.dataaccess.dao;
 
+import java.util.List;
+
 import com.epam.training.dataaccess.model.TransportType;
 
 public interface TransportTypeDao {
 
-	TransportType getById(Long id);
+	TransportType getByTypeName(String type);
 
-	void insert(TransportType transportType);
+	Long insert(TransportType transportType);
 
 	void update(TransportType transportType);
 	
-	void delete(Long id);
+	void delete(String type);
+	
+	Long getIdByType(String type);
+	
+	List<TransportType> getAll();
 }

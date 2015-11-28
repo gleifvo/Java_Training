@@ -1,12 +1,18 @@
 package com.epam.training.services;
 
+import java.util.List;
+
 import com.epam.training.dataaccess.model.Route;
 
 public interface RouteService {
 
-	void insertOrUpdate(Route route);
-
-	Route get(Long id);
+	void addRoute(Route route);
 	
-	void delete(Long id);
+	void updateRoute(Route route);
+
+	Route getRouteByNumber(Long id);
+	
+	void deleteRouteByNumber(Long id);
+	
+	List<Route> getAll();
 }

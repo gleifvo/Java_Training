@@ -9,6 +9,21 @@
 	    http://www.springframework.org/schema/tx
 	    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
+	<context:component-scan base-package="com.epam.training" />
+
+	<!-- Enable Annotation based Declarative Transaction Management -->
+	<tx:annotation-driven proxy-target-class="true"
+		transaction-manager="transactionManager" />
+
+
+	<!-- Creating TransactionManager Bean, since JDBC we are creating of type 
+		DataSourceTransactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
 
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
@@ -26,6 +41,6 @@
 
 	<context:property-placeholder
 		ignore-unresolvable="true" location="classpath:app.properties" />
-		
+
 </beans>
 

@@ -43,7 +43,6 @@ public class SchemaNameAwareBasicDataSource extends BasicDataSource {
 		} finally {
 			stmt.close();
 		}
-
 		return connection;
 	}
 }

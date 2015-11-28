@@ -12,7 +12,6 @@
 	<import resource="classpath:spring-db-context.xml" />
 
 
-	<context:component-scan base-package="com.epam.training" />
 
 </beans>
 

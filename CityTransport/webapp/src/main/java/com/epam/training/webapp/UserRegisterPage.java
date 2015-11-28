@@ -2,8 +2,8 @@ package com.epam.training.webapp;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.epam.training.dataaccess.dao.RouteDao;
 import com.epam.training.dataaccess.model.Route;
-import com.epam.training.services.RouteService;
 
 public class UserRegisterPage {
 
@@ -12,14 +12,13 @@ public class UserRegisterPage {
 		ClassPathXmlApplicationContext aContext = new ClassPathXmlApplicationContext(
 				"spring-context.xml");
 
-		RouteService routeService = aContext.getBean(RouteService.class);
+		RouteDao routeService = aContext.getBean(RouteDao.class);
 
 		Route route = new Route();
-		route = routeService.get(8L);
+		route.setInterval(150);
 		
-		route.setInterval(321);
 		
-		routeService.insertOrUpdate(route);
+		System.out.println(routeService.insert(route));
 
 	}
 }

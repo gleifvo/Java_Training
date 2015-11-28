@@ -1,10 +1,19 @@
 package com.epam.training.services;
 
+import java.util.List;
+
 import com.epam.training.dataaccess.model.TransportType;
 
 public interface TransportTypeService {
 	
-	void insertOrUpdate(TransportType transportType);
+	
+	void addTransportType(TransportType transportType);
+	
+	void updateTransportType(TransportType transportType);
 
-	TransportType get(Long id);	
+	TransportType getByName(String typeName);	
+	
+	void delete(String type);
+	
+	List<TransportType> getAll();
 }
