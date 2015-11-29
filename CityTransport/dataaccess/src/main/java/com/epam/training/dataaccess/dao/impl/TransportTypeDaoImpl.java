@@ -3,11 +3,8 @@ package com.epam.training.dataaccess.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -17,10 +14,13 @@ import com.epam.training.dataaccess.dao.TransportTypeDao;
 import com.epam.training.dataaccess.model.TransportType;
 
 @Repository
-public class TransportTypeDaoImpl implements TransportTypeDao {
+public class TransportTypeDaoImpl extends GenericDao<TransportType>
+		implements TransportTypeDao {
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+	public TransportTypeDaoImpl() {
+		super();
+		tableName = "transport_type";
+	}
 
 	@Override
 	public TransportType getByTypeName(String name) {
@@ -41,7 +41,7 @@ public class TransportTypeDaoImpl implements TransportTypeDao {
 				PreparedStatement ps = connection.prepareStatement(
 						"INSERT INTO transport_type (transport_type,capacity,max_speed) VALUES (?,?,?)",
 						new String[] { "id" });
-				ps.setString(1, transportType.getType());
+				ps.setString(1, transportType.getTransportType());
 				ps.setLong(2, transportType.getCapacity());
 				ps.setLong(3, transportType.getMaxSpeed());
 				return ps;
@@ -54,28 +54,27 @@ public class TransportTypeDaoImpl implements TransportTypeDao {
 	public void update(TransportType transportType) {
 		jdbcTemplate.update(
 				"UPDATE transport_type SET transport_type = ?, capacity = ?, max_speed = ? WHERE  id = ?",
-				transportType.getType(), transportType.getCapacity(),
+				transportType.getTransportType(), transportType.getCapacity(),
 				transportType.getMaxSpeed(), transportType.getId());
 	}
 
 	@Override
-	public void delete(String type) {
+	public void deleteByRegNumber(String type) {
 		jdbcTemplate.update("DELETE FROM transport_type WHERE transport_type = ?", type);
 	}
 
 	@Override
 	public Long getIdByType(String type) {
-		TransportType transportType =  jdbcTemplate.queryForObject(
+		TransportType transportType = jdbcTemplate.queryForObject(
 				"SELECT * FROM transport_type WHERE transport_type = ?",
 				new Object[] { type },
 				new BeanPropertyRowMapper<TransportType>(TransportType.class));
-		
+
 		return transportType.getId();
 	}
 
 	@Override
-	public List<TransportType> getAll() {
-		return jdbcTemplate.query("SELECT * FROM transport_type",
-				new BeanPropertyRowMapper<TransportType>(TransportType.class));
+	public String toString() {
+		return "TransportTypeDaoImpl [jdbcTemplate=" + jdbcTemplate + "]";
 	}
 }

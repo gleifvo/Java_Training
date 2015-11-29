@@ -17,7 +17,7 @@ import com.epam.training.services.TransportService;
 @Service
 public class TransportServiceImpl implements TransportService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(RouteServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TransportServiceImpl.class);
 
 	@Autowired
 	TransportDao transportDao;
@@ -28,14 +28,16 @@ public class TransportServiceImpl implements TransportService {
 	@Override
 	public void addTransport(Transport transport) {
 		transport.setId(transportDao.insert(transport));
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime())
-				+ " Transport with reg. number " + transport.getRegistrationNumber()
-				+ " added");
+		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
+				+ transport.toString() + " added");
 	}
 
 	@Override
 	public void updateTransport(Transport transport) {
 		transportDao.update(transport);
+		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
+				+ transport.toString() + " updated");
+
 	}
 
 	@Override
@@ -58,5 +60,10 @@ public class TransportServiceImpl implements TransportService {
 		transportDao.deleteByRegistrationNumber(regNumber);
 		LOGGER.info(new SimpleDateFormat().format(new Date().getTime())
 				+ " Transport with reg. number " + regNumber + " deleted");
+	}
+
+	@Override
+	public List<Transport> getAll() {
+		return transportDao.getAll();
 	}
 }

@@ -28,29 +28,28 @@ public class TransportServiceTest extends AbstractSpringTest {
 	public void InsertUpdateDeleteTest() {
 
 		transport = new Transport();
-		
+
 		List<TransportType> types = transportTypeService.getAll();
 		
 		List<Route> routes = routeService.getAll();
-
-		transport.setRegistrationNumber(
-				RandomStringUtils.randomAlphanumeric(new Random().nextInt(40)));
-
-		transport.setRouteId(routes.get(new Random().nextInt(routes.size())).getId());
 		
-		transport.setTypeId(types.get(new Random().nextInt(types.size())).getId());
-		
+		randomfilling(types, routes);
+
 		transportService.addTransport(transport);
-		
+
+		randomfilling(types, routes);
+
+		transportService.updateTransport(transport);
+
+		transportService.deleteByRegistrationNumber(transport.getRegistrationNumber());
+	}
+
+	private void randomfilling(List<TransportType> types, List<Route> routes) {
 		transport.setRegistrationNumber(
 				RandomStringUtils.randomAlphanumeric(new Random().nextInt(40)));
-		
+
 		transport.setRouteId(routes.get(new Random().nextInt(routes.size())).getId());
-		
+
 		transport.setTypeId(types.get(new Random().nextInt(types.size())).getId());
-		
-		transportService.updateTransport(transport);
-		
-		transportService.deleteByRegistrationNumber(transport.getRegistrationNumber());
 	}
 }

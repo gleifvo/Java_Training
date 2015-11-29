@@ -6,14 +6,13 @@ import com.epam.training.dataaccess.model.TransportType;
 
 public interface TransportTypeService {
 	
-	
 	void addTransportType(TransportType transportType);
 	
 	void updateTransportType(TransportType transportType);
 
 	TransportType getByName(String typeName);	
 	
-	void delete(String type);
+	void deleteByType(String type);
 	
 	List<TransportType> getAll();
 }

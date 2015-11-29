@@ -4,11 +4,11 @@ public class TransportType {
 
 	private Long id;
 
-	private String type;
+	private String transportType;
 
 	private Integer capacity;
 
-	private Integer Speed;
+	private Integer maxSpeed;
 
 	public Long getId() {
 		return id;
@@ -18,12 +18,20 @@ public class TransportType {
 		this.id = id;
 	}
 
-	public String getType() {
-		return type;
+	public String getTransportType() {
+		return transportType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setTransportType(String transportType) {
+		this.transportType = transportType;
+	}
+
+	public Integer getMaxSpeed() {
+		return maxSpeed;
+	}
+
+	public void setMaxSpeed(Integer speed) {
+		maxSpeed = speed;
 	}
 
 	public Integer getCapacity() {
@@ -34,29 +42,10 @@ public class TransportType {
 		this.capacity = capacity;
 	}
 
-	public Integer getMaxSpeed() {
-		return Speed;
-	}
-
-	public void setMaxSpeed(Integer maxSpeed) {
-		this.Speed = maxSpeed;
-	}
-
 	@Override
 	public String toString() {
-		return "TransportType [id=" + id + ", type=" + type + ", capacity=" + capacity
-				+ ", Speed=" + Speed + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((Speed == null) ? 0 : Speed.hashCode());
-		result = prime * result + ((capacity == null) ? 0 : capacity.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
+		return "TransportType [id=" + id + ", transportType=" + transportType
+				+ ", capacity=" + capacity + ", Speed=" + maxSpeed + "]";
 	}
 
 	@Override
@@ -68,10 +57,10 @@ public class TransportType {
 		if (getClass() != obj.getClass())
 			return false;
 		TransportType other = (TransportType) obj;
-		if (Speed == null) {
-			if (other.Speed != null)
+		if (maxSpeed == null) {
+			if (other.maxSpeed != null)
 				return false;
-		} else if (!Speed.equals(other.Speed))
+		} else if (!maxSpeed.equals(other.maxSpeed))
 			return false;
 		if (capacity == null) {
 			if (other.capacity != null)
@@ -83,10 +72,10 @@ public class TransportType {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (type == null) {
-			if (other.type != null)
+		if (transportType == null) {
+			if (other.transportType != null)
 				return false;
-		} else if (!type.equals(other.type))
+		} else if (!transportType.equals(other.transportType))
 			return false;
 		return true;
 	}

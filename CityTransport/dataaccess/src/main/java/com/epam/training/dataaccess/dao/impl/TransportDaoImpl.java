@@ -5,9 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -17,16 +15,18 @@ import com.epam.training.dataaccess.dao.TransportDao;
 import com.epam.training.dataaccess.model.Transport;
 
 @Repository
-public class TransportDaoImpl implements TransportDao {
+public class TransportDaoImpl extends GenericDao<Transport> implements TransportDao {
 
-	@Autowired
-	JdbcTemplate jdbcTemplate;
+	public TransportDaoImpl() {
+		super();
+		tableName = "transport";
+	}
 
 	@Override
-	public Transport getByRegistryNumber(String id) {
+	public Transport getByRegistryNumber(String number) {
 		return jdbcTemplate.queryForObject(
 				"SELECT * FROM transport where registration_number = ?",
-				new Object[] { id },
+				new Object[] { number },
 				new BeanPropertyRowMapper<Transport>(Transport.class));
 	}
 
@@ -41,9 +41,11 @@ public class TransportDaoImpl implements TransportDao {
 				PreparedStatement ps = connection.prepareStatement(
 						"INSERT INTO transport (registration_number,type_id,route_id) VALUES (?,?,?)",
 						new String[] { "id" });
+
 				ps.setString(1, transport.getRegistrationNumber());
 				ps.setLong(2, transport.getTypeId());
 				ps.setLong(3, transport.getRouteId());
+
 				return ps;
 			}
 		}, keyHolder);
@@ -66,16 +68,16 @@ public class TransportDaoImpl implements TransportDao {
 
 	@Override
 	public List<Transport> getByRouteId(Long id) {
-		return  jdbcTemplate.query(
-				"SELECT * FROM transport WHERE route_id = ?", new Object[] { id },
+		return jdbcTemplate.query("SELECT * FROM transport WHERE route_id = ?",
+				new Object[] { id },
 				new BeanPropertyRowMapper<Transport>(Transport.class));
 
 	}
 
 	@Override
 	public List<Transport> getByTypeId(Long id) {
-		return jdbcTemplate.query(
-				"SELECT * FROM transport where type_id = ?", new Object[] { id },
+		return jdbcTemplate.query("SELECT * FROM transport where type_id = ?",
+				new Object[] { id },
 				new BeanPropertyRowMapper<Transport>(Transport.class));
 	}
 }

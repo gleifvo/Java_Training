@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.epam.training.dataaccess.model.Transport;
 
-public interface TransportDao {
+public interface TransportDao extends GenericDaoInterface<Transport>{
 	
-	Transport getByRegistryNumber(String id);
+	Transport getByRegistryNumber(String number);
 	
 	List<Transport> getByRouteId(Long id);
 

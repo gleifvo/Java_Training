@@ -1,10 +1,8 @@
 package com.epam.training.dataaccess.dao;
 
-import java.util.List;
-
 import com.epam.training.dataaccess.model.TransportType;
 
-public interface TransportTypeDao {
+public interface TransportTypeDao extends GenericDaoInterface<TransportType>{
 
 	TransportType getByTypeName(String type);
 
@@ -12,9 +10,7 @@ public interface TransportTypeDao {
 
 	void update(TransportType transportType);
 	
-	void delete(String type);
+	void deleteByRegNumber(String type);
 	
 	Long getIdByType(String type);
-	
-	List<TransportType> getAll();
 }

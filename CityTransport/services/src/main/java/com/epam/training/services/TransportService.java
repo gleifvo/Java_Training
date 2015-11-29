@@ -16,5 +16,7 @@ public interface TransportService {
 	
 	List<Transport> getAllByType(String type);
 	
+	List<Transport> getAll();
+	
 	void deleteByRegistrationNumber(String regNumber);
 }

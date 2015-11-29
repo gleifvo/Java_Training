@@ -3,11 +3,7 @@ package com.epam.training.dataaccess.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -17,15 +13,11 @@ import com.epam.training.dataaccess.dao.RouteDao;
 import com.epam.training.dataaccess.model.Route;
 
 @Repository
-public class RouteDaoImpl implements RouteDao {
+public class RouteDaoImpl extends GenericDao<Route>implements RouteDao {
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
-
-	@Override
-	public Route getById(Long id) {
-		return jdbcTemplate.queryForObject("SELECT * FROM routes where id = ?",
-				new Object[] { id }, new BeanPropertyRowMapper<Route>(Route.class));
+	public RouteDaoImpl() {
+		super();
+		tableName = "routes";
 	}
 
 	@Override
@@ -53,14 +45,4 @@ public class RouteDaoImpl implements RouteDao {
 				route.getInterval(), route.getId());
 	}
 
-	@Override
-	public void delete(Long id) {
-		jdbcTemplate.update("DELETE FROM routes WHERE id = ?", id);
-	}
-
-	@Override
-	public List<Route> getAll() {
-		return jdbcTemplate.query("SELECT * FROM routes",
-				new BeanPropertyRowMapper<Route>(Route.class));
-	}
 }

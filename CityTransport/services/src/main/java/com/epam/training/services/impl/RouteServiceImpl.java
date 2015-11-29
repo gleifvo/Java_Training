@@ -27,7 +27,7 @@ public class RouteServiceImpl implements RouteService {
 
 	@Override
 	public void deleteRouteByNumber(Long id) {
-		routeDao.delete(id);
+		routeDao.deleteById(id);
 		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " Route number "
 				+ id + " deleted");
 	}
@@ -42,6 +42,8 @@ public class RouteServiceImpl implements RouteService {
 	@Override
 	public void updateRoute(Route route) {
 		routeDao.update(route);
+		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
+				+ route.toString() + " updated");
 	}
 
 	@Override
