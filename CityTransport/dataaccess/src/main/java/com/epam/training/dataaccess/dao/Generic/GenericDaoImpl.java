@@ -1,4 +1,4 @@
-package com.epam.training.dataaccess.dao.impl;
+package com.epam.training.dataaccess.dao.Generic;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -7,14 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.epam.training.dataaccess.dao.GenericDaoInterface;
-
-public class GenericDao<T> implements GenericDaoInterface<T> {
+public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
 
 	protected String tableName;
+	
 
 	@SuppressWarnings("unchecked")
 	private Class<T> classOfObjectClass = (Class<T>) ((ParameterizedType) getClass()
@@ -22,7 +21,6 @@ public class GenericDao<T> implements GenericDaoInterface<T> {
 
 	@Override
 	public T getById(Long id) {
-
 		return jdbcTemplate.queryForObject("SELECT * FROM " + tableName + " WHERE id = ?",
 				new Object[] { id }, new BeanPropertyRowMapper<T>(classOfObjectClass));
 	}
@@ -38,4 +36,5 @@ public class GenericDao<T> implements GenericDaoInterface<T> {
 		jdbcTemplate.update("DELETE FROM " + tableName + " WHERE id = ?", id);
 
 	}
+	
 }

@@ -12,10 +12,11 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.epam.training.dataaccess.dao.TransportDao;
+import com.epam.training.dataaccess.dao.Generic.GenericDaoImpl;
 import com.epam.training.dataaccess.model.Transport;
 
 @Repository
-public class TransportDaoImpl extends GenericDao<Transport> implements TransportDao {
+public class TransportDaoImpl extends GenericDaoImpl<Transport> implements TransportDao {
 
 	public TransportDaoImpl() {
 		super();
@@ -25,7 +26,7 @@ public class TransportDaoImpl extends GenericDao<Transport> implements Transport
 	@Override
 	public Transport getByRegistryNumber(String number) {
 		return jdbcTemplate.queryForObject(
-				"SELECT * FROM transport where registration_number = ?",
+				"SELECT * FROM " + tableName + "  where registration_number = ?",
 				new Object[] { number },
 				new BeanPropertyRowMapper<Transport>(Transport.class));
 	}
@@ -39,7 +40,7 @@ public class TransportDaoImpl extends GenericDao<Transport> implements Transport
 			public PreparedStatement createPreparedStatement(Connection connection)
 					throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(
-						"INSERT INTO transport (registration_number,type_id,route_id) VALUES (?,?,?)",
+						"INSERT INTO " + tableName + "  (registration_number,type_id,route_id) VALUES (?,?,?)",
 						new String[] { "id" });
 
 				ps.setString(1, transport.getRegistrationNumber());
@@ -55,20 +56,20 @@ public class TransportDaoImpl extends GenericDao<Transport> implements Transport
 	@Override
 	public void update(Transport transport) {
 		jdbcTemplate.update(
-				"UPDATE transport SET registration_number = ?, type_id = ?, route_id = ? WHERE  id = ?",
+				"UPDATE " + tableName + "  SET registration_number = ?, type_id = ?, route_id = ? WHERE  id = ?",
 				transport.getRegistrationNumber(), transport.getTypeId(),
 				transport.getRouteId(), transport.getId());
 	}
 
 	@Override
 	public void deleteByRegistrationNumber(String regNumber) {
-		jdbcTemplate.update("DELETE FROM transport WHERE registration_number = ?",
+		jdbcTemplate.update("DELETE FROM " + tableName + "  WHERE registration_number = ?",
 				regNumber);
 	}
 
 	@Override
 	public List<Transport> getByRouteId(Long id) {
-		return jdbcTemplate.query("SELECT * FROM transport WHERE route_id = ?",
+		return jdbcTemplate.query("SELECT * FROM " + tableName + "  WHERE route_id = ?",
 				new Object[] { id },
 				new BeanPropertyRowMapper<Transport>(Transport.class));
 
@@ -76,7 +77,7 @@ public class TransportDaoImpl extends GenericDao<Transport> implements Transport
 
 	@Override
 	public List<Transport> getByTypeId(Long id) {
-		return jdbcTemplate.query("SELECT * FROM transport where type_id = ?",
+		return jdbcTemplate.query("SELECT * FROM " + tableName + "  where type_id = ?",
 				new Object[] { id },
 				new BeanPropertyRowMapper<Transport>(Transport.class));
 	}

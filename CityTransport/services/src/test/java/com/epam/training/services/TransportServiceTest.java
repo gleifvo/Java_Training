@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.epam.training.dataaccess.model.Route;
 import com.epam.training.dataaccess.model.Transport;
 import com.epam.training.dataaccess.model.TransportType;
+import com.epam.training.utils.AbstractSpringTest;
 
 public class TransportServiceTest extends AbstractSpringTest {
 

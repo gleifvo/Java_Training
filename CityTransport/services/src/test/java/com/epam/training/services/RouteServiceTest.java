@@ -7,17 +7,23 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.training.dataaccess.model.Route;
+import com.epam.training.utils.AbstractSpringTest;
 
 public class RouteServiceTest extends AbstractSpringTest {
+	
 	@Autowired
 	private RouteService routeService;
+	
 
-	private static Route route;
+	private static Route route = new Route();
 
 	@Test
 	public void InsertTest() {
+		
 
-		route = new Route();
+		route.setId(2L);
+		
+		System.out.println(routeService.getStops(route));
 
 		route.setInterval(new Random().nextInt(10));
 
@@ -26,8 +32,6 @@ public class RouteServiceTest extends AbstractSpringTest {
 
 	@Test
 	public void UpdateTest() {
-
-		route = new Route();
 
 		route.setInterval(new Random().nextInt(100));
 

@@ -2,13 +2,12 @@ package com.epam.training.dataaccess.dao;
 
 import java.util.List;
 
+import com.epam.training.dataaccess.dao.Generic.GenericDao;
 import com.epam.training.dataaccess.model.Route;
+import com.epam.training.dataaccess.model.Stop;
 
-public interface RouteDao extends GenericDaoInterface<Route> {
+public interface RouteDao extends GenericDao<Route> {
 
-	Long insert(Route route);
+	List<Stop> getStops(Route route);
 
-	void update(Route route);
-
-	List<Route> getAll();
 }

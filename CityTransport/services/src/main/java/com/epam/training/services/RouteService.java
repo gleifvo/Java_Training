@@ -3,6 +3,7 @@ package com.epam.training.services;
 import java.util.List;
 
 import com.epam.training.dataaccess.model.Route;
+import com.epam.training.dataaccess.model.Stop;
 
 public interface RouteService {
 
@@ -15,4 +16,6 @@ public interface RouteService {
 	void deleteRouteByNumber(Long id);
 	
 	List<Route> getAll();
+	
+	List<Stop> getStops(Route route);
 }

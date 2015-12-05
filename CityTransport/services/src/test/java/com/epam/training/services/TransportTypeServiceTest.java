@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.epam.training.dataaccess.model.TransportType;
+import com.epam.training.utils.AbstractSpringTest;
 
 public class TransportTypeServiceTest extends AbstractSpringTest {
 

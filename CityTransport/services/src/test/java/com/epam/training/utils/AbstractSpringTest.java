@@ -1,4 +1,4 @@
-package com.epam.training.services;
+package com.epam.training.utils;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
