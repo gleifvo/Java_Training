@@ -5,9 +5,9 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 import com.epam.training.webapp.page.home.HomePage;
 
-public class MenuForAnonymUser extends Panel {
+public class MenuForLoggedUser extends Panel {
 
-	public MenuForAnonymUser(String id) {
+	public MenuForLoggedUser(String id) {
 		super(id);
 
 	}
@@ -25,6 +25,14 @@ public class MenuForAnonymUser extends Panel {
 		});
 		
 		add(new Link<Void>("btn-shedule") {
+
+			@Override
+			public void onClick() {
+				setResponsePage(HomePage.class);
+			}
+		});
+		
+		add(new Link<Void>("Liked") {
 
 			@Override
 			public void onClick() {

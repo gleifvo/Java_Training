@@ -77,8 +77,6 @@ margin: 0 0 0 175px;
 
 .title p {
 color: #FFFFFF;
-
-padding-bottom: 12px;
 }
 
 h1 {
@@ -99,8 +97,8 @@ color: #FFB849;
 }
 
 h2 {
-font: normal 1.5em Georgia, "Times New Roman", Times, serif;
-color: #004F8B;
+font: normal 1.3em Georgia, "Times New Roman", Times, serif;
+color: #FFFFFF;
 letter-spacing: 1px;
 background: url('.img/h2-bg.gif') no-repeat 0 53%;
 padding-left: 25px;
@@ -188,7 +186,6 @@ margin: 0 6em 0 2em;
 line-height: 1.6;
 margin: 0 0 10px 25px;
 color: #242424;
-
 }
 
 
@@ -204,6 +201,7 @@ margin-bottom: 12px;
 color: #004F8B;
 background: url('.img/bullet.gif') no-repeat 0 0;
 padding-left: 27px;
+
 }
 
 
@@ -212,10 +210,6 @@ padding-left: 27px;
 
 
 
-: #004F8B;
-background: url('.img/bullet.gif') no-repeat 0 0;
-padding-left: 27px;
-}
 
 
 
@@ -223,43 +217,10 @@ padding-left: 27px;
 
 
 
-: #004F8B;
-background: url('.img/bullet.gif') no-repeat 0 0;
-padding-left: 27px;
-}
 
 
 
 
-
-
-
-: #004F8B;
-background: url('.img/bullet.gif') no-repeat 0 0;
-padding-left: 27px;
-}
-
-
-
-
-
-
-
-: #004F8B;
-background: url('.img/bullet.gif') no-repeat 0 0;
-padding-left: 27px;
-}
-
-
-
-
-
-
-
-: #004F8B;
-background: url('.img/bullet.gif') no-repeat 0 0;
-padding-left: 27px;
-}
 
 
 
