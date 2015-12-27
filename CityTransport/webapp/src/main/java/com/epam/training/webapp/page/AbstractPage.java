@@ -10,16 +10,9 @@ public class AbstractPage extends WebPage {
 
 	@Override
 	protected void onInitialize() {
-
 		super.onInitialize();
 		add(new PanelForAnonymUser("menu-panel"));
 		add(new MenuForLoggedUser("menu"));
-
-
-
-		
-		
-	
 
 	}
 

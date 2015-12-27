@@ -20,7 +20,7 @@ public class TransportServiceImpl implements TransportService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(TransportServiceImpl.class);
 
 	@Autowired
-	TransportDao transportDao;
+	private TransportDao transportDao;
 
 	@Autowired
 	private TransportTypeDao transportTypeDao;

@@ -19,7 +19,7 @@ public class UserDaoImpl extends GenericDaoImpl<User>implements UserDao{
 
 	public UserDaoImpl() {
 		super();
-		tableName = "user";
+		tableName = "user_info";
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class UserDaoImpl extends GenericDaoImpl<User>implements UserDao{
 					throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(
 						"INSERT INTO " + tableName
-								+ "  (login,password,user_type_id) VALUES (?,?,?)",
+								+ " (login,password,user_type_id) VALUES (?,?,?)",
 						new String[] { "id" });
 				ps.setString(1, user.getLogin());
 				ps.setString(2, user.getPassword());

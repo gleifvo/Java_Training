@@ -1,6 +1,5 @@
 package com.epam.training.webapp.app;
 
-import org.apache.wicket.application.ComponentInstantiationListenerCollection;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
@@ -36,10 +35,10 @@ public class WicketApplication extends WebApplication {
 	@Override
 	public void init() {
 		super.init();
-		new ComponentInstantiationListenerCollection()
-				.add(new SpringComponentInjector(this, context));
+        getComponentInstantiationListeners().add(
+                new SpringComponentInjector(this, context));
 
-		
+
 		// add your configuration here
 	}
 

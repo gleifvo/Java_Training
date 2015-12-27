@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.epam.training.dataaccess.dao.UserDao;
 import com.epam.training.dataaccess.dao.UserTypeDao;
+import com.epam.training.dataaccess.model.User;
 import com.epam.training.services.UserService;
 
 
@@ -17,10 +18,18 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserTypeDao userTypeDao;
 	
+	private String defaultUserType;
+	
 	@Override
 	public boolean authenticate(String login, String password) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void registrationUser(User user) {
+		user.setUserTypeId(2L);
+		userDao.insert(user);
 	}
 
 }
