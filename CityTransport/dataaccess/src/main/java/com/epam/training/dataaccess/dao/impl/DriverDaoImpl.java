@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -61,6 +62,12 @@ public class DriverDaoImpl extends GenericDaoImpl<Driver>implements DriverDao {
 				+ " WHERE  t2d.transport_id in " + "( SELECT T.id FROM transport T"
 				+ " WHERE T.registration_number = ?))", new Object[] { number },
 				new BeanPropertyRowMapper<Driver>(Driver.class));
+	}
+
+	@Override
+	protected Map<String, Object> getParametersForInsert(Driver entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.epam.training.dataaccess.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Map;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -77,5 +78,11 @@ public class TransportTypeDaoImpl extends GenericDaoImpl<TransportType>
 	@Override
 	public String toString() {
 		return "TransportTypeDaoImpl [jdbcTemplate=" + jdbcTemplate + "]";
+	}
+
+	@Override
+	protected Map<String, Object> getParametersForInsert(TransportType entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

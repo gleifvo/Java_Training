@@ -20,8 +20,6 @@ public class RouteServiceTest extends AbstractSpringTest {
 	@Test
 	public void InsertTest() {
 		
-
-		route.setId(2L);
 		
 		System.out.println(routeService.getStops(route));
 

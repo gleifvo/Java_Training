@@ -3,6 +3,7 @@ package com.epam.training.dataaccess.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Map;
 
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -44,6 +45,12 @@ public class StopDaoImpl extends GenericDaoImpl<Stop>implements StopDao {
 	public void update(Stop stop) {
 		jdbcTemplate.update("UPDATE " + tableName + "  SET name = ? WHERE  id = ?",
 				stop.getName(), stop.getId());
+	}
+
+	@Override
+	protected Map<String, Object> getParametersForInsert(Stop entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

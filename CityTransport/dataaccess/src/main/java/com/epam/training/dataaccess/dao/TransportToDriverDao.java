@@ -4,5 +4,5 @@ import com.epam.training.dataaccess.model.TransportToDriver;
 
 public interface TransportToDriverDao {
 
-	public void insert(final TransportToDriver transportToDriver);
+	void insert(final TransportToDriver transportToDriver);
 }

@@ -3,6 +3,7 @@ package com.epam.training.dataaccess.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Map;
 
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -49,6 +50,12 @@ public class UserDaoImpl extends GenericDaoImpl<User>implements UserDao{
 				"UPDATE " + tableName
 						+ "  SET login = ?,password = ?,user_type_id = ? WHERE  id = ?",
 				user.getLogin(), user.getPassword(), user.getUserTypeId(), user.getId());
+	}
+
+	@Override
+	protected Map<String, Object> getParametersForInsert(User entity) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -4,13 +4,14 @@ import java.util.List;
 
 public interface GenericDao<T> {
 	
-	public List<T> getAll();
+	 List<T> getAll();
 	
-	public T getById(Long id);
+	 T getById(Long id);
 	
-	public void deleteById(Long id);
+	 void deleteById(Long id);
 	
-	public Long insert(T object);
+	 Long insert(T object);
 
-	public void update(T object);
+	 void update(T object);
+	 
 }
