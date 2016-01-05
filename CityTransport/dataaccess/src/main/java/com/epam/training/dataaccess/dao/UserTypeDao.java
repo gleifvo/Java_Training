@@ -5,4 +5,5 @@ import com.epam.training.dataaccess.model.UserType;
 
 public interface UserTypeDao extends GenericDao<UserType> {
 
+	Long getIdByType(String type);
 }

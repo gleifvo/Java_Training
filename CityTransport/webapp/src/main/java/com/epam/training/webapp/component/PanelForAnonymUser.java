@@ -3,7 +3,7 @@ package com.epam.training.webapp.component;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
-import com.epam.training.webapp.page.home.HomePage;
+import com.epam.training.webapp.page.admin.AdminPage;
 import com.epam.training.webapp.page.user.UserRegisterPage;
 
 public class PanelForAnonymUser extends Panel {
@@ -28,7 +28,7 @@ public class PanelForAnonymUser extends Panel {
 
 			@Override
 			public void onClick() {
-				setResponsePage(HomePage.class);
+				setResponsePage(AdminPage.class);
 			}
 		});
 	}

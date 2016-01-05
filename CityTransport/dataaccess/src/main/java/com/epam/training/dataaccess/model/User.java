@@ -2,23 +2,13 @@ package com.epam.training.dataaccess.model;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
-
-	private Long id;
+public class User extends AbstractObject implements Serializable {
 
 	private String login;
 
 	private String password;
 
 	private Long userTypeId;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getLogin() {
 		return login;

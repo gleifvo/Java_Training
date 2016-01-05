@@ -19,7 +19,10 @@ font: 1.2em Verdana, Arial, Helvetica, sans-serif;
 background-image: url("/img/CityTransport.gif");
 background-repeat: no-repeat;
 background-size: cover;
-opacity: 0.98;
+opacity: 0.98;  
+
+
+
 }
 
 a:link, a:visited {
@@ -43,7 +46,7 @@ padding-bottom: 350px;
 text-align: left;
 background-image: url("/img/background.gif");
 background-repeat: no-repeat;
-background-size: cover;
+background-size: auto;
 
 }
 
@@ -203,6 +206,7 @@ background: url('.img/bullet.gif') no-repeat 0 0;
 padding-left: 27px;
 
 }
+
 
 
 

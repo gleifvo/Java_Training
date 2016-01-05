@@ -1,5 +1,7 @@
 package com.epam.training.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,18 +10,17 @@ import com.epam.training.dataaccess.dao.UserTypeDao;
 import com.epam.training.dataaccess.model.User;
 import com.epam.training.services.UserService;
 
-
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Autowired
 	private UserTypeDao userTypeDao;
 	
-	private String defaultUserType;
-	
+	private String defaultUserType = "user";
+
 	@Override
 	public boolean authenticate(String login, String password) {
 		// TODO Auto-generated method stub
@@ -28,8 +29,14 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void registrationUser(User user) {
-		user.setUserTypeId(2L);
+		user.setUserTypeId(userTypeDao.getIdByType(defaultUserType));
 		userDao.insert(user);
+
+	}
+
+	@Override
+	public List<User> getAll() {
+		return userDao.getAll();
 	}
 
 }

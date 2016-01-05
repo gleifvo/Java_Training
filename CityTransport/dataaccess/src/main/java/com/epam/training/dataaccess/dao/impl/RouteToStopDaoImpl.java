@@ -15,7 +15,6 @@ public class RouteToStopDaoImpl implements RouteToStopDao {
 
 	@Override
 	public void insert(final RouteToStop routeToStop) {
-
 		jdbcTemplate.update("INSERT INTO route_2stop (route_id,stop_id) VALUES(?,?)",
 				routeToStop.getRouteId(), routeToStop.getStopId());
 

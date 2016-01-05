@@ -21,18 +21,15 @@ public class TransportTypeServiceTest extends AbstractSpringTest {
 		TransportType transportType = new TransportType();
 
 		randomfilling(transportType);
-		
+
 		transportTypeService.addTransportType(transportType);
-		
+
 		randomfilling(transportType);
-		
+
 		transportTypeService.updateTransportType(transportType);
-		
+
 		Assert.assertTrue(transportTypeService.getAll().contains(transportType));
-		
-		transportTypeService.deleteByType(transportType.getTransportType());
-		
-		Assert.assertFalse(transportTypeService.getAll().contains(transportType));
+
 	}
 
 	private void randomfilling(TransportType transportType) {
@@ -40,7 +37,7 @@ public class TransportTypeServiceTest extends AbstractSpringTest {
 
 		transportType.setMaxSpeed(new Random().nextInt(120));
 
-		transportType
-				.setTransportType(RandomStringUtils.randomAlphanumeric(new Random().nextInt(10)));
+		transportType.setTransportType(
+				RandomStringUtils.randomAlphanumeric(new Random().nextInt(10)));
 	}
 }

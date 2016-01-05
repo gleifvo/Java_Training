@@ -1,15 +1,10 @@
 package com.epam.training.dataaccess.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.epam.training.dataaccess.dao.DriverDao;
@@ -25,37 +20,6 @@ public class DriverDaoImpl extends GenericDaoImpl<Driver>implements DriverDao {
 	}
 
 	@Override
-	public Long insert(final Driver driver) {
-
-		KeyHolder keyHolder = new GeneratedKeyHolder();
-
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			@Override
-			public PreparedStatement createPreparedStatement(Connection connection)
-					throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(
-						"INSERT INTO " + tableName
-								+ "  (last_name,first_name,age) VALUES (?,?,?)",
-						new String[] { "id" });
-				ps.setString(1, driver.getLastName());
-				ps.setString(2, driver.getFirstName());
-				ps.setInt(3, driver.getAge());
-				return ps;
-			}
-		}, keyHolder);
-		return keyHolder.getKey().longValue();
-	}
-
-	@Override
-	public void update(Driver driver) {
-		jdbcTemplate.update(
-				"UPDATE " + tableName
-						+ "  SET last_name = ?,first_name = ?,age = ? WHERE  id = ?",
-				driver.getFirstName(), driver.getFirstName(), driver.getAge(),
-				driver.getId());
-	}
-
-	@Override
 	public List<Driver> getDriversByRegNumber(String number) {
 		return jdbcTemplate.query("SELECT * FROM driver D " + "WHERE  D.id in "
 				+ "( SELECT t2d.driver_id FROM transport_2driver t2d"
@@ -65,9 +29,13 @@ public class DriverDaoImpl extends GenericDaoImpl<Driver>implements DriverDao {
 	}
 
 	@Override
-	protected Map<String, Object> getParametersForInsert(Driver entity) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Map<String, Object> getParametersForInsert(Driver object) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("last_name", object.getLastName());
+		parameters.put("first_name", object.getFirstName());
+		parameters.put("age", object.getAge());
+
+		return parameters;
 	}
 
 }

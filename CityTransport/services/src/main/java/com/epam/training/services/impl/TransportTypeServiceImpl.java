@@ -15,9 +15,10 @@ import com.epam.training.services.TransportTypeService;
 
 @Service
 public class TransportTypeServiceImpl implements TransportTypeService {
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(TransportTypeServiceImpl.class);
-	
+
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(TransportTypeServiceImpl.class);
+
 	@Autowired
 	private TransportTypeDao transportTypeDao;
 
@@ -38,13 +39,6 @@ public class TransportTypeServiceImpl implements TransportTypeService {
 	@Override
 	public TransportType getByName(String typeName) {
 		return transportTypeDao.getByTypeName(typeName);
-	}
-
-	@Override
-	public void deleteByType(String type) {
-		transportTypeDao.deleteByRegNumber(type);
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
-				+ type.toString() + " deleted");
 	}
 
 	@Override

@@ -1,8 +1,6 @@
 package com.epam.training.dataaccess.model;
 
-public class TransportType {
-
-	private Long id;
+public class TransportType extends AbstractObject {
 
 	private String transportType;
 
@@ -10,13 +8,6 @@ public class TransportType {
 
 	private Integer maxSpeed;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getTransportType() {
 		return transportType;

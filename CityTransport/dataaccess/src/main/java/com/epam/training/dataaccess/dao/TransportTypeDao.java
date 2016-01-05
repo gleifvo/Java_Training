@@ -7,7 +7,5 @@ public interface TransportTypeDao extends GenericDao<TransportType> {
 
 	TransportType getByTypeName(String type);
 
-	void deleteByRegNumber(String type);
-
 	Long getIdByType(String type);
 }

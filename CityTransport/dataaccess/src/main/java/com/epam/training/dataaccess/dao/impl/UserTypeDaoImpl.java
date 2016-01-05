@@ -1,13 +1,9 @@
 package com.epam.training.dataaccess.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.epam.training.dataaccess.dao.UserTypeDao;
@@ -15,8 +11,7 @@ import com.epam.training.dataaccess.dao.Generic.GenericDaoImpl;
 import com.epam.training.dataaccess.model.UserType;
 
 @Repository
-public class UserTypeDaoImpl extends GenericDaoImpl<UserType>
-		implements UserTypeDao {
+public class UserTypeDaoImpl extends GenericDaoImpl<UserType>implements UserTypeDao {
 
 	public UserTypeDaoImpl() {
 		super();
@@ -24,34 +19,19 @@ public class UserTypeDaoImpl extends GenericDaoImpl<UserType>
 	}
 
 	@Override
-	public Long insert(final UserType userType) {
+	protected Map<String, Object> getParametersForInsert(UserType object) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("type", object.getType());
 
-		KeyHolder keyHolder = new GeneratedKeyHolder();
-
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			@Override
-			public PreparedStatement createPreparedStatement(Connection connection)
-					throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(
-						"INSERT INTO " + tableName + " (type) VALUES (?)",
-						new String[] { "id" });
-				ps.setString(1, userType.getType());
-
-				return ps;
-			}
-		}, keyHolder);
-		return keyHolder.getKey().longValue();
+		return parameters;
 	}
 
 	@Override
-	public void update(UserType userType) {
-		jdbcTemplate.update("UPDATE " + tableName + "  SET type = ? WHERE  id = ?",
-				userType.getType(), userType.getId());
-	}
-
-	@Override
-	protected Map<String, Object> getParametersForInsert(UserType entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public Long getIdByType(String type) {
+		UserType transportType = jdbcTemplate.queryForObject(
+				"SELECT * FROM " + tableName + "  WHERE type = ?",
+				new Object[] { type },
+				new BeanPropertyRowMapper<UserType>(UserType.class));
+		return transportType.getId();
 	}
 }

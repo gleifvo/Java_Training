@@ -1,18 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class UserType {
-
-	private Long id;
+public class UserType extends AbstractObject {
 
 	private String type;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getType() {
 		return type;

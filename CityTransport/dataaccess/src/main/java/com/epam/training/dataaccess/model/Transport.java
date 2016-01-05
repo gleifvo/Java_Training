@@ -1,8 +1,6 @@
 package com.epam.training.dataaccess.model;
 
-public class Transport {
-
-	private Long id;
+public class Transport extends AbstractObject {
 
 	private String registrationNumber;
 
@@ -32,14 +30,6 @@ public class Transport {
 
 	public void setTypeId(Long typeId) {
 		this.typeId = typeId;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	@Override

@@ -11,8 +11,7 @@ public interface TransportTypeService {
 	void updateTransportType(TransportType transportType);
 
 	TransportType getByName(String typeName);	
-	
-	void deleteByType(String type);
+
 	
 	List<TransportType> getAll();
 }

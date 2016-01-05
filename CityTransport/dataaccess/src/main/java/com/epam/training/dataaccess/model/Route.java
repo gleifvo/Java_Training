@@ -1,18 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class Route {
-
-	private Long id;
+public class Route extends AbstractObject {
 
 	private Integer Interval;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Integer getInterval() {
 		return Interval;

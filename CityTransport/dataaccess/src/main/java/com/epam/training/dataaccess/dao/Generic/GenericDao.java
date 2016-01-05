@@ -5,6 +5,8 @@ import java.util.List;
 public interface GenericDao<T> {
 	
 	 List<T> getAll();
+	 
+	 List<T> getAll(long first, long count);
 	
 	 T getById(Long id);
 	

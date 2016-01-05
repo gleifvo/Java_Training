@@ -9,10 +9,10 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
 import com.epam.training.dataaccess.model.User;
-import com.epam.training.services.RouteService;
 import com.epam.training.services.UserService;
+import com.epam.training.webapp.component.MenuForAnonymUser;
+import com.epam.training.webapp.component.PanelForAnonymUser;
 import com.epam.training.webapp.page.AbstractPage;
-import com.epam.training.webapp.page.home.HomePage;
 
 public class UserRegisterPage extends AbstractPage {
 
@@ -22,6 +22,9 @@ public class UserRegisterPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+		
+		add(new PanelForAnonymUser("menu-panel"));
+		add(new MenuForAnonymUser("menu"));
 		
 		final User newUser = new User();
 
@@ -46,7 +49,7 @@ public class UserRegisterPage extends AbstractPage {
 				if (newUser.getPassword()
 						.equals(confirmPasswordField.getDefaultModelObject())) {
 					userService.registrationUser(newUser);
-					setResponsePage(new HomePage());
+					setResponsePage(new UsersPage());
 				}
 				else
 				{
