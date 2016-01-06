@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserTypeDao userTypeDao;
-	
+
 	private String defaultUserType = "user";
 
 	@Override
@@ -38,5 +38,14 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAll() {
 		return userDao.getAll();
 	}
+
+	public List<User> getAll(long first, long count) {
+		return userDao.getAll(first, count);
+	}
+	
+	public List<User> getAll(long first, long count,String field,String order) {
+		return userDao.getAll(first, count);
+	}
+
 
 }

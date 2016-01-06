@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+
+	<div wicket:id="table">
+		<table>
+			<thead>
+				<tr>
+					<th wicket:id="sortId"><h2>
+							<button class="btn">ID</button>
+						</h2></th>
+					<th wicket:id="sortfName"><h2>
+							<button class="btn">First name</button>
+						</h2></th>
+					<th wicket:id="sortlName"><h2>
+							<button class="btn">Last name</button>
+						</h2></th>
+					<th wicket:id="sortAge"><h2>
+							<button class="btn">Age</button>
+						</h2></th>
+				</tr>
+			</thead>
+
+
+			<tbody>
+
+				<tr wicket:id="drivers-list">
+					<td><h2 wicket:id="id"></h2></td>
+					<td><h2 wicket:id="firstName"></h2></td>
+					<td><h2 wicket:id="lastName"></h2></td>
+					<td><h2 wicket:id="age"></h2></td>
+
+					<td><h2>
+							<button class="btn" wicket:id="edit-link">Edit</button>
+						</h2></td>
+				</tr>
+
+			</tbody>
+
+
+		</table>
+	</div>
+
+	<h2>
+		<div wicket:id="paging"></div>
+	</h2>
+	
+</wicket:extend>

@@ -1,6 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class Driver extends AbstractObject {
+import java.io.Serializable;
+
+public class Driver extends AbstractObject implements Serializable {
 
 	private String lastName;
 

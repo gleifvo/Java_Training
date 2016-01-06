@@ -1,4 +1,4 @@
-package com.epam.training.dataaccess.dao.Generic;
+package com.epam.training.dataaccess.dao.generic;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.Iterator;
@@ -38,9 +38,37 @@ public abstract class GenericDaoImpl<T extends AbstractObject> implements Generi
 
 	@Override
 	public List<T> getAll(long first, long count) {
+		return jdbcTemplate.query(
+				String.format("SELECT * FROM " + tableName + " LIMIT %s OFFSET %s ",
+						count, first),
+				new BeanPropertyRowMapper<T>(classOfObjectClass));
+	}
+
+	@Override
+	public List<T> getAll(long first, long count, String field, String order) {
+
+		order = replaceOrder(order);
+
 		return jdbcTemplate
-				.query(String.format("SELECT * FROM" + tableName + "LIMIT %s OFFSET %s ",
-						count, first), new BeanPropertyRowMapper<T>(classOfObjectClass));
+				.query(String.format(
+						"SELECT * FROM " + tableName
+								+ " ORDER BY %s %s LIMIT %s OFFSET %s ",
+						field, order, count, first),
+				new BeanPropertyRowMapper<T>(classOfObjectClass));
+
+	}
+
+	private String replaceOrder(String order) {
+		
+		switch (order) {
+		case "ASCENDING":
+			order = "ASC";
+			break;
+		case "DESCENDING":
+			order = "DESC";
+			break;
+		}
+		return order;
 	}
 
 	@Override
@@ -74,7 +102,7 @@ public abstract class GenericDaoImpl<T extends AbstractObject> implements Generi
 				updatingParameters.append(String.format("%s=?, ", parameter.getKey()));
 			} else {
 				iterator.remove();
-				
+
 			}
 		}
 		try {
@@ -82,7 +110,7 @@ public abstract class GenericDaoImpl<T extends AbstractObject> implements Generi
 		} catch (StringIndexOutOfBoundsException e) {
 			return;
 		}
-		
+
 		jdbcTemplate.update(
 				String.format("UPDATE %s SET %s WHERE id = %s", tableName,
 						updatingParameters, object.getId()),
