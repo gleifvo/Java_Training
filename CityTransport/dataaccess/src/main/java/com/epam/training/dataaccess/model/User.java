@@ -14,6 +14,16 @@ public class User extends AbstractObject implements Serializable {
 		return login;
 	}
 
+	public User() {
+		super();
+	}
+
+	public User(String login, String password) {
+		super();
+		this.login = login;
+		this.password = password;
+	}
+
 	public void setLogin(String login) {
 		this.login = login;
 	}

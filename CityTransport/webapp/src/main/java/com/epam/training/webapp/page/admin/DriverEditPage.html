@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<h1>Register new user</h1>
+	<form wicket:id="form">
+		<table>
+
+			<tr>
+				<td><h2>First name:</h2></td>
+				<td><input wicket:id="firstName" type="text" /></td>
+			</tr>
+			<tr>
+				<td><h2>Last name:</h2></td>
+				<td><input wicket:id="lastName" type="text" /></td>
+			</tr>
+			<tr>
+				<td><h2>Age:</h2></td>
+				<td><input wicket:id="age" type="text" /></td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><h2><button class="btn" type="submit"
+						wicket:id="submit-button">Save</button></h2></td>
+			</tr>
+		</table>
+	</form>
+	<div wicket:id="feedback"></div>
+</wicket:extend>

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.epam.training.dataaccess.dao.StopDao;
-import com.epam.training.dataaccess.dao.Generic.GenericDaoImpl;
+import com.epam.training.dataaccess.dao.generic.GenericDaoImpl;
 import com.epam.training.dataaccess.model.Stop;
 
 @Repository

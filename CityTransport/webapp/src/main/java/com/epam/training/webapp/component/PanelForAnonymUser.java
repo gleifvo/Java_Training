@@ -4,6 +4,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import com.epam.training.webapp.page.admin.DriversPage;
+import com.epam.training.webapp.page.login.LoginPage;
 import com.epam.training.webapp.page.user.UserRegisterPage;
 
 public class PanelForAnonymUser extends Panel {
@@ -20,7 +21,7 @@ public class PanelForAnonymUser extends Panel {
 
 			@Override
 			public void onClick() {
-				setResponsePage(UserRegisterPage.class);
+				setResponsePage(LoginPage.class);
 			}
 		});
 		
@@ -28,7 +29,7 @@ public class PanelForAnonymUser extends Panel {
 
 			@Override
 			public void onClick() {
-				setResponsePage(DriversPage.class);
+				setResponsePage(UserRegisterPage.class);
 			}
 		});
 	}

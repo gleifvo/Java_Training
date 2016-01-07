@@ -5,7 +5,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.Model;
 
-import com.epam.training.webapp.page.home.HomePage;
+import com.epam.training.webapp.app.CustomSession;
+import com.epam.training.webapp.page.login.LoginPage;
 
 public class PanelForLoggedUser extends Panel {
 
@@ -20,12 +21,14 @@ public class PanelForLoggedUser extends Panel {
 		add(new Link<Void>("Logout") {
 			@Override
 			public void onClick() {
-				setResponsePage(HomePage.class);
+                CustomSession.get().signOut();
+                setResponsePage(LoginPage.class);
 			}
 		});
 		
 		Label label = new Label("Name-label");
-		label.setDefaultModel(new Model<String>("Hello, Username"));
+		String currentUserLogin = CustomSession.get().getCurrentUserLogin();
+		label.setDefaultModel(new Model<String>("Hello, "+ currentUserLogin));
 		add(label);
 	}
 }

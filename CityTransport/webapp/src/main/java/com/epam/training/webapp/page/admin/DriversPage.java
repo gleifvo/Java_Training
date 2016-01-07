@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.sort.AjaxFallbackOrderByBorder;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.ISortState;
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
@@ -20,13 +21,12 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
 import com.epam.training.dataaccess.model.Driver;
-import com.epam.training.dataaccess.model.User;
 import com.epam.training.services.DriverService;
-import com.epam.training.services.UserService;
 import com.epam.training.webapp.component.MenuForLoggedUser;
 import com.epam.training.webapp.component.PanelForLoggedUser;
 import com.epam.training.webapp.page.AbstractPage;
 
+@AuthorizeInstantiation(value = { "admin" })
 public class DriversPage extends AbstractPage {
 
 	@Inject
@@ -66,7 +66,7 @@ public class DriversPage extends AbstractPage {
 				item.add(new Link("edit-link") {
 					@Override
 					public void onClick() {
-						System.out.println(driver.toString());
+						setResponsePage(new DriverEditPage(driver));
 					}
 				});
 
@@ -74,10 +74,42 @@ public class DriversPage extends AbstractPage {
 		};
 
 		webMarkupContainer.add(dataView);
-		final AjaxPagingNavigator ajaxPagingNavigator = new AjaxPagingNavigator("paging", dataView);
+		final AjaxPagingNavigator ajaxPagingNavigator = new AjaxPagingNavigator("paging",
+				dataView);
 		add(ajaxPagingNavigator);
 
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortId", "id", usersDataProvider) {
+		webMarkupContainer.add(
+				new AjaxFallbackOrderByBorder<Object>("sortId", "id", usersDataProvider) {
+					@Override
+					protected void onSortChanged() {
+						dataView.setCurrentPage(0);
+					}
+
+					@Override
+					protected void onAjaxClick(AjaxRequestTarget target) {
+						target.add(webMarkupContainer);
+						target.add(ajaxPagingNavigator);
+
+					}
+				});
+
+		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortfName",
+				"first_name", usersDataProvider) {
+			@Override
+			protected void onSortChanged() {
+				dataView.setCurrentPage(0);
+			}
+
+			@Override
+			protected void onAjaxClick(AjaxRequestTarget target) {
+				target.add(webMarkupContainer);
+				target.add(ajaxPagingNavigator);
+			}
+		});
+
+		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortlName",
+				"last_name", usersDataProvider) {
+
 			@Override
 			protected void onSortChanged() {
 				dataView.setCurrentPage(0);
@@ -89,24 +121,11 @@ public class DriversPage extends AbstractPage {
 				target.add(ajaxPagingNavigator);
 
 			}
+
 		});
 
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortfName", "first_name",
+		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortAge", "age",
 				usersDataProvider) {
-			@Override
-			protected void onSortChanged() {
-				dataView.setCurrentPage(0);
-			}
-
-			@Override
-			protected void onAjaxClick(AjaxRequestTarget target) {
-				target.add(webMarkupContainer);
-				target.add(ajaxPagingNavigator);
-			}
-		});
-
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortlName", "last_name",
-				usersDataProvider) {
 
 			@Override
 			protected void onSortChanged() {
@@ -121,23 +140,6 @@ public class DriversPage extends AbstractPage {
 			}
 
 		});
-
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortAge", "age", usersDataProvider) {
-
-			@Override
-			protected void onSortChanged() {
-				dataView.setCurrentPage(0);
-			}
-
-			@Override
-			protected void onAjaxClick(AjaxRequestTarget target) {
-				target.add(webMarkupContainer);
-				target.add(ajaxPagingNavigator);
-
-			}
-
-		});
-
 
 	}
 

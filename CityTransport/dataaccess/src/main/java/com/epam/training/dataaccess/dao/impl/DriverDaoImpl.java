@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.epam.training.dataaccess.dao.DriverDao;
-import com.epam.training.dataaccess.dao.Generic.GenericDaoImpl;
+import com.epam.training.dataaccess.dao.generic.GenericDaoImpl;
 import com.epam.training.dataaccess.model.Driver;
 
 @Repository

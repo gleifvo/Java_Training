@@ -47,4 +47,9 @@ public class DriverServiceImpl implements DriverService {
 		return driverDao.getDriversByRegNumber(number);
 	}
 
+	@Override
+	public Driver getById(Long id) {
+		return driverDao.getById(id);
+	}
+
 }

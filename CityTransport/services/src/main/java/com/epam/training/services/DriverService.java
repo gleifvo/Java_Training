@@ -6,6 +6,8 @@ import com.epam.training.dataaccess.model.Driver;
 
 public interface DriverService {
 
+	Driver getById(Long id);
+	
 	void add(Driver driver);
 
 	void update(Driver driver);

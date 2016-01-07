@@ -6,7 +6,9 @@ import com.epam.training.dataaccess.model.User;
 
 public interface UserService {
 
-	boolean authenticate(String login, String password);
+	boolean authenticate(User user);
+	
+	String getRole(Long id);
 
 	void registrationUser(User user);
 

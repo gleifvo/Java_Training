@@ -13,6 +13,7 @@ import com.epam.training.services.UserService;
 import com.epam.training.webapp.component.MenuForAnonymUser;
 import com.epam.training.webapp.component.PanelForAnonymUser;
 import com.epam.training.webapp.page.AbstractPage;
+import com.epam.training.webapp.page.home.HomePage;
 
 public class UserRegisterPage extends AbstractPage {
 
@@ -22,10 +23,10 @@ public class UserRegisterPage extends AbstractPage {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		
+
 		add(new PanelForAnonymUser("menu-panel"));
 		add(new MenuForAnonymUser("menu"));
-		
+
 		final User newUser = new User();
 
 		Form<User> form = new Form<>("form");
@@ -45,14 +46,11 @@ public class UserRegisterPage extends AbstractPage {
 			@Override
 			public void onSubmit() {
 
-				
 				if (newUser.getPassword()
 						.equals(confirmPasswordField.getDefaultModelObject())) {
 					userService.registrationUser(newUser);
-					setResponsePage(new UsersPage());
-				}
-				else
-				{
+					setResponsePage(new HomePage());
+				} else {
 					setResponsePage(new UserRegisterPage());
 				}
 			}
