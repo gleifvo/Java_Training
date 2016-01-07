@@ -20,7 +20,6 @@ public class LoginPage extends AbstractPage {
 	protected void onInitialize() {
 		super.onInitialize();
 
-		
 		add(new PanelForAnonymUser("menu-panel"));
 		add(new MenuForAnonymUser("menu"));
 		add(new FeedbackPanel("feedbackPanel"));
@@ -42,14 +41,19 @@ public class LoginPage extends AbstractPage {
 			public void onSubmit() {
 				super.onSubmit();
 
-				boolean isSuccess = CustomSession.get().signIn(loginModel.getObject(),
-						passModel.getObject());
+				try {
+					boolean isSuccess = CustomSession.get().signIn(loginModel.getObject(),
+							passModel.getObject());
 
-				if (isSuccess) {
-					setResponsePage(new UsersPage());
-				} else {
-					error("login error");
-					setResponsePage(getPage());
+					if (isSuccess) {
+						setResponsePage(new UsersPage());
+					} else {
+						error("Incorrect password");
+						setResponsePage(getPage());
+					}
+
+				} catch (RuntimeException e) {
+					error(e.getMessage());
 				}
 
 			}

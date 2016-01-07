@@ -26,11 +26,16 @@ public class UserServiceImpl implements UserService {
 	public boolean authenticate(User user) {
 		try {
 			User newUser = userDao.getByLogin(user.getLogin());
-			user.setId(newUser.getId());
-			user.setUserTypeId(newUser.getUserTypeId());
-			return true;
-		} catch (DataAccessException e) {
+			
+			if (user.getPassword().equals(newUser.getPassword())) {
+				user.setId(newUser.getId());
+				user.setUserTypeId(newUser.getUserTypeId());
+				return true;
+			}
 			return false;
+
+		} catch (DataAccessException e) {
+			throw new RuntimeException("User not found");
 		}
 	}
 
