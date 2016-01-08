@@ -17,6 +17,7 @@ public class PanelForAnonymUser extends Panel {
 	protected void onInitialize() {
 		super.onInitialize();
 
+		add(new LanguageSelectionComponent("lang-select"));
 		add(new Link<Void>("Sign-in") {
 
 			@Override

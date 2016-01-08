@@ -18,6 +18,7 @@ public class PanelForLoggedUser extends Panel {
 	protected void onInitialize() {
 		super.onInitialize();
 
+		add(new LanguageSelectionComponent("lang-select"));
 		add(new Link<Void>("Logout") {
 			@Override
 			public void onClick() {
@@ -28,7 +29,7 @@ public class PanelForLoggedUser extends Panel {
 		
 		Label label = new Label("Name-label");
 		String currentUserLogin = CustomSession.get().getCurrentUserLogin();
-		label.setDefaultModel(new Model<String>("Hello, "+ currentUserLogin));
+		label.setDefaultModel(new Model<String>(getString("hello")+ currentUserLogin));
 		add(label);
 	}
 }
