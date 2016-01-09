@@ -5,6 +5,17 @@ public class TransportToDriver {
 
 	private Long driverId;
 
+	public TransportToDriver() {
+		super();
+
+	}
+
+	public TransportToDriver(Long transportId, Long driverId) {
+		super();
+		this.transportId = transportId;
+		this.driverId = driverId;
+	}
+
 	public Long getTransportId() {
 		return transportId;
 	}

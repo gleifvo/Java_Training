@@ -10,4 +10,6 @@ public interface TransportToDriverDao {
 	void insert(final TransportToDriver transportToDriver);
 
 	public List<Transport> getDriverTransports(Long id);
+	
+	public void  deleteEntry(Long transportId,Long driverId);
 }

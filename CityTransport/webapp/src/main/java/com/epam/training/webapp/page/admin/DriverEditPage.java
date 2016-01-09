@@ -19,21 +19,27 @@ import org.apache.wicket.model.util.ListModel;
 import com.epam.training.dataaccess.model.Driver;
 import com.epam.training.dataaccess.model.Transport;
 import com.epam.training.services.DriverService;
+import com.epam.training.services.TransportService;
 import com.epam.training.webapp.component.MenuForLoggedUser;
 import com.epam.training.webapp.component.PanelForLoggedUser;
 import com.epam.training.webapp.page.AbstractPage;
 import com.googlecode.wicket.jquery.ui.form.palette.Palette;
 
+import net.sf.cglib.core.CollectionUtils;
+
 @AuthorizeInstantiation(value = { "admin" })
 public class DriverEditPage extends AbstractPage {
 
-	private List<Transport> transportList = new ArrayList<Transport>() ;
+	private List<Transport> transportList = new ArrayList<Transport>();
 	private List<Transport> selectedTransport = new ArrayList<Transport>();
-	
+
 	@Inject
 	private DriverService driverService;
 
-	private Driver driver;
+	@Inject
+	private TransportService transportService;
+
+	private Driver driver = new Driver();
 
 	public DriverEditPage() {
 		this(new Driver());
@@ -59,7 +65,12 @@ public class DriverEditPage extends AbstractPage {
 		form.add(new TextField<String>("lastName"));
 		form.add(new TextField<String>("age"));
 
-		IChoiceRenderer<Transport> renderer = new ChoiceRenderer<Transport>("name", "id");
+		IChoiceRenderer<Transport> renderer = new ChoiceRenderer<Transport>(
+				"registrationNumber", "id");
+
+		selectedTransport = driverService.getDriverTransports(driver.getId());
+
+		transportList = transportService.getAll();
 
 		final Palette<Transport> palette = new Palette<Transport>("palette",
 				new ListModel<Transport>(selectedTransport),
@@ -72,6 +83,16 @@ public class DriverEditPage extends AbstractPage {
 			public void onSubmit() {
 
 				driverService.update(driver);
+
+				transportList.removeAll(selectedTransport);
+				
+				for (Transport transport : transportList) {
+					driverService.deleteTransport(transport.getId(), driver.getId());
+				}
+
+				for (Transport transport : selectedTransport) {
+					driverService.addTransport(transport.getId(), driver.getId());
+				}
 
 				setResponsePage(new DriversPage());
 

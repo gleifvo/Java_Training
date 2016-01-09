@@ -69,6 +69,12 @@ public class DriversPage extends AbstractPage {
 						setResponsePage(new DriverEditPage(driver));
 					}
 				});
+				item.add(new Link("delete-link") {
+					@Override
+					public void onClick() {
+						driverService.deleteDriver(driver.getId());
+					}
+				});
 
 			}
 		};

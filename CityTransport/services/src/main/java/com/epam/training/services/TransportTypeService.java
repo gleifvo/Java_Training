@@ -11,7 +11,6 @@ public interface TransportTypeService {
 	void updateTransportType(TransportType transportType);
 
 	TransportType getByName(String typeName);	
-
 	
 	List<TransportType> getAll();
 }

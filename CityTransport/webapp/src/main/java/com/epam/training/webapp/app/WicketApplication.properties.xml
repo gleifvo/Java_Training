@@ -27,6 +27,6 @@
 	<entry key="userPage">User page</entry>
 	<entry key="palette.available">Available</entry>
 	<entry key="palette.selected">Selected</entry>
-	
+	<entry key="delete">Delete</entry>
 
 </properties>

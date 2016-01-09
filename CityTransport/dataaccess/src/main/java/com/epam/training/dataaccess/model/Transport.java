@@ -1,6 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class Transport extends AbstractObject {
+import java.io.Serializable;
+
+public class Transport extends AbstractObject implements Serializable{
 
 	private String registrationNumber;
 
