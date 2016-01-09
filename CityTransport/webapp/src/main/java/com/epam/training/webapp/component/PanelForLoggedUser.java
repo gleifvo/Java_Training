@@ -29,7 +29,7 @@ public class PanelForLoggedUser extends Panel {
 		
 		Label label = new Label("Name-label");
 		String currentUserLogin = CustomSession.get().getCurrentUserLogin();
-		label.setDefaultModel(new Model<String>(getString("hello")+ currentUserLogin));
+		label.setDefaultModel(new Model<String>(getString("hello") +" "+ currentUserLogin+". "));
 		add(label);
 	}
 }

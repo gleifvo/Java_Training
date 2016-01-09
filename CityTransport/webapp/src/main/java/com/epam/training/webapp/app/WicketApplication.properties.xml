@@ -6,6 +6,27 @@
 	<entry key="signIn">Sign in</entry>
 	<entry key="signUp">Sign up</entry>
 	<entry key="hello">Hello </entry>
-	<entry key="schedule">Shedule</entry>
+	<entry key="schedule">Schedule</entry>
 	<entry key="menu">MENU</entry>
+	<entry key="lang">Language:</entry>
+	<entry key="liked">My Favorites</entry>
+	<entry key="drivers">Drivers</entry>
+	<entry key="fName">First name</entry>
+	<entry key="lName">Last name</entry>
+	<entry key="age">Age</entry>
+	<entry key="register">Registry new user</entry>
+	<entry key="edit">Edit</entry>
+	<entry key="confirm">Confirm</entry>
+	<entry key="login">Login</entry>
+	<entry key="log-in">Login</entry>
+	<entry key="password">Password</entry>
+	<entry key="homePage">Home page</entry>
+	<entry key="loginPage">Login page</entry>
+	<entry key="save">Save</entry>
+	<entry key="cTransport">City transport</entry>
+	<entry key="userPage">User page</entry>
+	<entry key="palette.available">Available</entry>
+	<entry key="palette.selected">Selected</entry>
+	
+
 </properties>

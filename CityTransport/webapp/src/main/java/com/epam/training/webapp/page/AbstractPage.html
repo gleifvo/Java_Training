@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
 <head>
-<title>City Transport</title>
+<title><wicket:message key="cTransport" /></title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css"
@@ -21,10 +21,12 @@
 		<!-- Content !-->
 		<div class="content">
 			<div class="column-left">
-				<h3><wicket:message key="menu" /></h3>
+				<h3>
+					<wicket:message key="menu" />
+				</h3>
 				<wicket:container wicket:id="menu"></wicket:container>
 			</div>
-			
+
 			<div class="column-right">
 				<div class="box">
 					<div class="box-in">

@@ -5,24 +5,25 @@
 		<table>
 			<tr>
 				<td><h1>
-						<label>Register new user</label>
+						<label><wicket:message key="register" /></label>
 					</h1></td>
 			</tr>
 			<tr>
 				<td><h2>
-						<label>Login:</label>
+						<label><wicket:message key="login" />:</label>
 					</h2></td>
 				<td><input wicket:id="login" type="text" /></td>
 			</tr>
 			<tr>
 				<td><h2>
-						<label>password:</label>
+						<label><wicket:message key="password" />:</label>
 					</h2></td>
 				<td><input wicket:id="password" type="text" /></td>
 			</tr>
 			<tr>
 				<td><h2>
-						<label>confirm password:</label>
+						<label><wicket:message key="confirm" /> <wicket:message
+								key="password" />:</label>
 					</h2></td>
 				<td><input wicket:id="confirm-password" type="text" /></td>
 			</tr>
@@ -30,8 +31,9 @@
 
 			<tr>
 				<td><h2>
-						<button class="btn" type="submit" wicket:id="submit-button">register
-							new user</button>
+						<button class="btn" type="submit" wicket:id="submit-button">
+							<wicket:message key="save" />
+						</button>
 					</h2></td>
 			</tr>
 		</table>

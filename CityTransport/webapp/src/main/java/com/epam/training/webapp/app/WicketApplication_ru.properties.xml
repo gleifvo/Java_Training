@@ -8,5 +8,27 @@
 	<entry key="signIn">Вход</entry>
 	<entry key="signUp">Регистрация</entry>
 	<entry key="menu">МЕНЮ</entry>
+	<entry key="lang">Язык:</entry>
+	<entry key="liked">Избранное</entry>
+	<entry key="drivers">Водители</entry>
+	<entry key="fName">Имя</entry>
+	<entry key="lName">Фамилия</entry>
+	<entry key="age">Возраст</entry>
+	<entry key="register">Регистрация нового пользователя</entry>
+	<entry key="edit">Редактировать</entry>
+	<entry key="confirm">Подтвердите</entry>
+	<entry key="login">Логин</entry>
+	<entry key="log-in">Войти</entry>
+	<entry key="password">Пароль</entry>
+	<entry key="homePage">Домашняя страница</entry>
+	<entry key="loginPage">Страница авторизации</entry>
+	<entry key="save">Сохранить</entry>
+	<entry key="cTransport">Городской транспорт</entry>
+	<entry key="userPage">Пользовательская страница</entry>
+	<entry key="palette.available">Доступные</entry>
+	<entry key="palette.selected">Выбранные</entry>
+	
+	
+
 
 </properties>

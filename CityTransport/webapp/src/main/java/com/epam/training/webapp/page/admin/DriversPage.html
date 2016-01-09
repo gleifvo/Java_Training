@@ -10,13 +10,19 @@
 							<button class="btn">ID</button>
 						</h2></th>
 					<th wicket:id="sortfName"><h2>
-							<button class="btn">First name</button>
+							<button class="btn">
+								<wicket:message key="fName" />
+							</button>
 						</h2></th>
 					<th wicket:id="sortlName"><h2>
-							<button class="btn">Last name</button>
+							<button class="btn">
+								<wicket:message key="lName" />
+							</button>
 						</h2></th>
 					<th wicket:id="sortAge"><h2>
-							<button class="btn">Age</button>
+							<button class="btn">
+								<wicket:message key="age" />
+							</button>
 						</h2></th>
 				</tr>
 			</thead>
@@ -31,7 +37,9 @@
 					<td><h2 wicket:id="age"></h2></td>
 
 					<td><h2>
-							<button class="btn" wicket:id="edit-link">Edit</button>
+							<button class="btn" wicket:id="edit-link">
+								<wicket:message key="edit" />
+							</button>
 						</h2></td>
 				</tr>
 
@@ -42,7 +50,7 @@
 	</div>
 
 	<h2>
-		<div wicket:id="paging"/>
+		<div wicket:id="paging" />
 	</h2>
-	
+
 </wicket:extend>

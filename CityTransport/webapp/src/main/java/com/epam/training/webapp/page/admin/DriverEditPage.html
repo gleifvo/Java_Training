@@ -1,25 +1,64 @@
 <!DOCTYPE html>
 <wicket:extend xmlns:wicket="http://wicket.apache.org">
-	<h1>Register new user</h1>
+	<style>
+
+.ui-widget-header {
+	font: normal 1.5em Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+	padding-top: 25px;
+	margin-left: 20px;
+}
+
+.button {
+	color: white;
+	background: black;
+	font-weight: bold;
+	background-image: url("/img/arrow.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.palette {
+
+    margin: 10px 0 22px 22px;
+}
+</style>
 	<form wicket:id="form">
 		<table>
 
 			<tr>
-				<td><h2>First name:</h2></td>
+				<td><h2>
+						<wicket:message key="fName" />
+						:
+					</h2></td>
 				<td><input wicket:id="firstName" type="text" /></td>
 			</tr>
 			<tr>
-				<td><h2>Last name:</h2></td>
+				<td><h2>
+						<wicket:message key="lName" />
+						:
+					</h2></td>
 				<td><input wicket:id="lastName" type="text" /></td>
 			</tr>
 			<tr>
-				<td><h2>Age:</h2></td>
+				<td><h2>
+						<wicket:message key="age" />
+						:
+					</h2></td>
 				<td><input wicket:id="age" type="text" /></td>
 			</tr>
 
+			<br />
+			<h2 wicket:id="palette" class="palette"></h2>
+
+
+
 			<tr>
-				<td colspan="2"><h2><button class="btn" type="submit"
-						wicket:id="submit-button">Save</button></h2></td>
+				<td colspan="2"><h2>
+						<button class="btn" type="submit" wicket:id="submit-button">
+							<wicket:message key="save" />
+						</button>
+					</h2></td>
 			</tr>
 		</table>
 	</form>

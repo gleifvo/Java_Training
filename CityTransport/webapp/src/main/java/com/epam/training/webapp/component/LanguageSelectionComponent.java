@@ -3,6 +3,7 @@ package com.epam.training.webapp.component;
 import java.util.Locale;
 
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
@@ -41,6 +42,13 @@ public class LanguageSelectionComponent extends Panel {
 		@Override
 		public void onClick() {
 			Session.get().setLocale(new Locale(getId()));
+
+			Class<? extends Page> pageClass = getPage().getClass();
+			try {
+				setResponsePage(pageClass.newInstance());
+			} catch (InstantiationException | IllegalAccessException e) {
+				throw new RuntimeException("Page can not be created");
+			}
 
 		}
 	}
