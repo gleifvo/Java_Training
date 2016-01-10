@@ -32,7 +32,8 @@
 	<entry key="routes">Маршруты</entry>
 	<entry key="interval">Интервал</entry>
 	<entry key="num">Номер</entry>
-	
+	<entry key="name">Название</entry>
+	<entry key="stops">Остановки</entry>
 	
 
 

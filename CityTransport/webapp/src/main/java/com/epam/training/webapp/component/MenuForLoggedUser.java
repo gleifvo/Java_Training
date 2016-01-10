@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 
 import com.epam.training.webapp.page.admin.DriversPage;
 import com.epam.training.webapp.page.admin.RoutesPage;
+import com.epam.training.webapp.page.admin.StopsPage;
 import com.epam.training.webapp.page.home.HomePage;
 
 public class MenuForLoggedUser extends Panel {
@@ -45,6 +46,11 @@ public class MenuForLoggedUser extends Panel {
 				RoutesPage.class);
 
 		add(routesPage);
+		
+		BookmarkablePageLink<Void> stopsPage = new AdminPage("stops-page",
+				StopsPage.class);
+
+		add(stopsPage);
 
 	}
 
