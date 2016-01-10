@@ -1,6 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class Route extends AbstractObject {
+import java.io.Serializable;
+
+public class Route extends AbstractObject implements Serializable {
 
 	private Integer Interval;
 

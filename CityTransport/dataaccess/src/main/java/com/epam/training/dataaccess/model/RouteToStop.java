@@ -1,6 +1,19 @@
 package com.epam.training.dataaccess.model;
 
-public class RouteToStop {
+import java.io.Serializable;
+
+public class RouteToStop implements Serializable {
+
+	public RouteToStop(Long routeId, Long stopId) {
+		super();
+		this.routeId = routeId;
+		this.stopId = stopId;
+	}
+
+	public RouteToStop() {
+		super();
+
+	}
 
 	private Long routeId;
 

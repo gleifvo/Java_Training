@@ -29,5 +29,8 @@
 	<entry key="palette.selected">Selected</entry>
 	<entry key="delete">Delete</entry>
 	<entry key="add">Add</entry>
+	<entry key="routes">Routes</entry>
+	<entry key="interval">Interval</entry>
+	<entry key="num">Number</entry>
 
 </properties>

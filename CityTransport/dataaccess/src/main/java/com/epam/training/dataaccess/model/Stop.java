@@ -1,6 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class Stop extends AbstractObject {
+import java.io.Serializable;
+
+public class Stop extends AbstractObject implements Serializable {
 
 	private String name;
 

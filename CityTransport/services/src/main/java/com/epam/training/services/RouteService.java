@@ -18,4 +18,12 @@ public interface RouteService {
 	List<Route> getAll();
 	
 	List<Stop> getStops(Route route);
+
+	List<Route> getAll(long first, long count, String field, String order);
+
+	Integer getCountRoutes();
+
+	void addStop(Long routeId, Long stopId);
+
+	void deleteStop(Long routeId, Long stopId);
 }

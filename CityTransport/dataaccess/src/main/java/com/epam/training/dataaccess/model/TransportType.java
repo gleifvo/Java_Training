@@ -1,13 +1,14 @@
 package com.epam.training.dataaccess.model;
 
-public class TransportType extends AbstractObject {
+import java.io.Serializable;
+
+public class TransportType extends AbstractObject implements Serializable {
 
 	private String transportType;
 
 	private Integer capacity;
 
 	private Integer maxSpeed;
-
 
 	public String getTransportType() {
 		return transportType;

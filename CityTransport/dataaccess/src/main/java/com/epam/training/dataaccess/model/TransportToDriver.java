@@ -1,6 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class TransportToDriver {
+import java.io.Serializable;
+
+public class TransportToDriver implements Serializable {
 	private Long transportId;
 
 	private Long driverId;

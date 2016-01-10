@@ -59,7 +59,7 @@ public abstract class GenericDaoImpl<T extends AbstractObject> implements Generi
 	}
 
 	private String replaceOrder(String order) {
-		
+
 		switch (order) {
 		case "ASCENDING":
 			order = "ASC";
@@ -116,6 +116,12 @@ public abstract class GenericDaoImpl<T extends AbstractObject> implements Generi
 						updatingParameters, object.getId()),
 				parametersForInsert.values().toArray());
 
+	}
+
+	@Override
+	public Integer getCount() {
+		return jdbcTemplate.queryForObject("SELECT COUNT(1) FROM " + tableName,
+				Integer.class);
 	}
 
 }

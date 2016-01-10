@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.epam.training.dataaccess.dao.TransportToDriverDao;
-import com.epam.training.dataaccess.model.Driver;
 import com.epam.training.dataaccess.model.Transport;
 import com.epam.training.dataaccess.model.TransportToDriver;
 

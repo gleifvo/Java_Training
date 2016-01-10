@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import com.epam.training.webapp.page.admin.DriversPage;
+import com.epam.training.webapp.page.admin.RoutesPage;
 import com.epam.training.webapp.page.home.HomePage;
 
 public class MenuForLoggedUser extends Panel {
@@ -18,7 +19,6 @@ public class MenuForLoggedUser extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-
 
 		add(new Link<Void>("btn-shedule") {
 
@@ -41,6 +41,10 @@ public class MenuForLoggedUser extends Panel {
 
 		add(driversPage);
 
+		BookmarkablePageLink<Void> routesPage = new AdminPage("routes-page",
+				RoutesPage.class);
+
+		add(routesPage);
 
 	}
 

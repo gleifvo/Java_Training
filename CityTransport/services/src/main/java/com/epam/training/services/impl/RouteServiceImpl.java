@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.epam.training.dataaccess.dao.RouteDao;
+import com.epam.training.dataaccess.dao.RouteToStopDao;
 import com.epam.training.dataaccess.model.Route;
+import com.epam.training.dataaccess.model.RouteToStop;
 import com.epam.training.dataaccess.model.Stop;
 import com.epam.training.services.RouteService;
 
@@ -21,6 +23,9 @@ public class RouteServiceImpl implements RouteService {
 
 	@Autowired
 	private RouteDao routeDao;
+
+	@Autowired
+	private RouteToStopDao routeToStopDao;
 
 	@Override
 	public Route getRouteByNumber(Long id) {
@@ -55,7 +60,28 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
+	public List<Route> getAll(long first, long count, String field, String order) {
+		return routeDao.getAll(first, count, field, order);
+	}
+
+	@Override
 	public List<Stop> getStops(Route route) {
 		return routeDao.getStops(route);
+	}
+
+	@Override
+	public Integer getCountRoutes() {
+		return routeDao.getCount();
+	}
+
+	@Override
+	public void addStop(Long routeId,Long stopId) {
+		RouteToStop routeToStop = new RouteToStop(routeId,stopId);
+		routeToStopDao.insert(routeToStop);
+	}
+	
+	@Override
+	public void deleteStop(Long routeId, Long stopId) {
+		routeToStopDao.deleteEntry(stopId, routeId);
 	}
 }

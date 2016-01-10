@@ -1,6 +1,8 @@
 package com.epam.training.dataaccess.model;
 
-public class UserType extends AbstractObject {
+import java.io.Serializable;
+
+public class UserType extends AbstractObject implements Serializable {
 
 	private String type;
 

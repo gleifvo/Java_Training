@@ -38,10 +38,4 @@ public class DriverDaoImpl extends GenericDaoImpl<Driver>implements DriverDao {
 		return parameters;
 	}
 
-	@Override
-	public Integer getCount() {
-		return jdbcTemplate.queryForObject("SELECT COUNT(1) FROM "+ tableName,
-				Integer.class);
-	}
-
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<style>
+.ui-widget-header {
+	font: normal 1.5em Georgia, "Times New Roman", Times, serif;
+	color: #FFFFFF;
+	padding-top: 25px;
+	margin-left: 20px;
+}
+
+.button {
+	color: white;
+	background: black;
+	font-weight: bold;
+	background-image: url("/img/arrow.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.palette {
+	margin: 10px 0 22px 22px;
+}
+</style>
+	<form wicket:id="form">
+		<table>
+
+			<tr>
+				<td><h2>
+						<wicket:message key="interval" />
+						:
+					</h2></td>
+				<td><input wicket:id="interval" type="text" /></td>
+			</tr>
+
+			<br />
+			<h2 wicket:id="palette" class="palette"></h2>
+
+
+
+			<tr>
+				<td colspan="2"><h2>
+						<button class="btn" type="submit" wicket:id="submit-button">
+							<wicket:message key="save" />
+						</button>
+					</h2></td>
+			</tr>
+		</table>
+	</form>
+	<div wicket:id="feedback"></div>
+</wicket:extend>
