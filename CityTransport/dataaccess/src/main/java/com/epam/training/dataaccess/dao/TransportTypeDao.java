@@ -8,4 +8,6 @@ public interface TransportTypeDao extends GenericDao<TransportType> {
 	TransportType getByTypeName(String type);
 
 	Long getIdByType(String type);
+
+	String getTypeById(Long id);
 }

@@ -80,4 +80,9 @@ public class DriverServiceImpl implements DriverService {
 		driverDao.deleteById(id);
 	}
 
+    @Override
+    public Integer getCountDrivers() {
+        return driverDao.getCount();
+    }
+
 }

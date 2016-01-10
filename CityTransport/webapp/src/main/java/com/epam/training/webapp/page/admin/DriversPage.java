@@ -14,6 +14,7 @@ import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -80,6 +81,16 @@ public class DriversPage extends AbstractPage {
 		};
 
 		webMarkupContainer.add(dataView);
+
+		webMarkupContainer.add(new Link("add-link") {
+
+			@Override
+			public void onClick() {
+				setResponsePage(new DriverEditPage());
+
+			}
+
+		});
 		final AjaxPagingNavigator ajaxPagingNavigator = new AjaxPagingNavigator("paging",
 				dataView);
 		add(ajaxPagingNavigator);
@@ -169,7 +180,7 @@ public class DriversPage extends AbstractPage {
 
 		@Override
 		public long size() {
-			return driverService.getAll().size();
+			return driverService.getCountDrivers();
 
 		}
 

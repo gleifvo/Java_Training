@@ -23,6 +23,7 @@ import com.epam.training.services.TransportService;
 import com.epam.training.webapp.component.MenuForLoggedUser;
 import com.epam.training.webapp.component.PanelForLoggedUser;
 import com.epam.training.webapp.page.AbstractPage;
+import com.epam.training.webapp.renderer.TransportChoiceRenderer;
 import com.googlecode.wicket.jquery.ui.form.palette.Palette;
 
 import net.sf.cglib.core.CollectionUtils;
@@ -41,13 +42,17 @@ public class DriverEditPage extends AbstractPage {
 
 	private Driver driver = new Driver();
 
+	private boolean isNew;
+
 	public DriverEditPage() {
 		this(new Driver());
+		isNew = true;
 	}
 
 	public DriverEditPage(Driver driver) {
 		super();
 		this.driver = driver;
+		isNew = false;
 	}
 
 	@Override
@@ -65,8 +70,7 @@ public class DriverEditPage extends AbstractPage {
 		form.add(new TextField<String>("lastName"));
 		form.add(new TextField<String>("age"));
 
-		IChoiceRenderer<Transport> renderer = new ChoiceRenderer<Transport>(
-				"registrationNumber", "id");
+		IChoiceRenderer<Transport> renderer = new TransportChoiceRenderer();
 
 		selectedTransport = driverService.getDriverTransports(driver.getId());
 
@@ -82,10 +86,14 @@ public class DriverEditPage extends AbstractPage {
 			@Override
 			public void onSubmit() {
 
-				driverService.update(driver);
+				if (isNew) {
+					driverService.add(driver);
+				} else {
+					driverService.update(driver);
+				}
 
 				transportList.removeAll(selectedTransport);
-				
+
 				for (Transport transport : transportList) {
 					driverService.deleteTransport(transport.getId(), driver.getId());
 				}

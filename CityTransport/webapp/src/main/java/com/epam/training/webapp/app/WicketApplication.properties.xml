@@ -28,5 +28,6 @@
 	<entry key="palette.available">Available</entry>
 	<entry key="palette.selected">Selected</entry>
 	<entry key="delete">Delete</entry>
+	<entry key="add">Add</entry>
 
 </properties>

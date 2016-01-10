@@ -66,4 +66,9 @@ public class TransportServiceImpl implements TransportService {
 	public List<Transport> getAll() {
 		return transportDao.getAll();
 	}
+
+	@Override
+	public String getTypeById(Long id) {
+		return transportTypeDao.getTypeById(id);
+	}
 }

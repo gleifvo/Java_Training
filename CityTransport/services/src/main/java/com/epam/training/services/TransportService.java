@@ -19,4 +19,7 @@ public interface TransportService {
 	List<Transport> getAll();
 	
 	void deleteByRegistrationNumber(String regNumber);
+	
+	String getTypeById(Long id);
+
 }

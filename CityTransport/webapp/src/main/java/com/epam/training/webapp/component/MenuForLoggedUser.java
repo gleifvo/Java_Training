@@ -1,14 +1,10 @@
 package com.epam.training.webapp.component;
 
-import java.beans.Visibility;
-
-import org.apache.wicket.authorization.Action;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeAction;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
-import com.epam.training.webapp.page.admin.DriverEditPage;
 import com.epam.training.webapp.page.admin.DriversPage;
 import com.epam.training.webapp.page.home.HomePage;
 

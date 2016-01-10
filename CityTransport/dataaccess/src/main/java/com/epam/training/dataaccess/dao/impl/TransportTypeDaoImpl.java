@@ -37,6 +37,16 @@ public class TransportTypeDaoImpl extends GenericDaoImpl<TransportType>
 
 		return transportType.getId();
 	}
+	
+	@Override
+	public String getTypeById(Long id) {
+		TransportType transportType = jdbcTemplate.queryForObject(
+				"SELECT * FROM " + tableName + "  WHERE id = ?",
+				new Object[] { id },
+				new BeanPropertyRowMapper<TransportType>(TransportType.class));
+
+		return transportType.getTransportType();
+	}
 
 	@Override
 	public String toString() {
