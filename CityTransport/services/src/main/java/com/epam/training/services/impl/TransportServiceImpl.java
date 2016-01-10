@@ -11,13 +11,12 @@ import org.springframework.stereotype.Service;
 
 import com.epam.training.dataaccess.dao.TransportDao;
 import com.epam.training.dataaccess.dao.TransportTypeDao;
+import com.epam.training.dataaccess.model.Route;
 import com.epam.training.dataaccess.model.Transport;
 import com.epam.training.services.TransportService;
 
 @Service
 public class TransportServiceImpl implements TransportService {
-
-	private static final Logger LOGGER = LoggerFactory.getLogger(TransportServiceImpl.class);
 
 	@Autowired
 	private TransportDao transportDao;
@@ -28,15 +27,12 @@ public class TransportServiceImpl implements TransportService {
 	@Override
 	public void addTransport(Transport transport) {
 		transport.setId(transportDao.insert(transport));
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
-				+ transport.toString() + " added");
+
 	}
 
 	@Override
 	public void updateTransport(Transport transport) {
 		transportDao.update(transport);
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
-				+ transport.toString() + " updated");
 
 	}
 
@@ -58,8 +54,7 @@ public class TransportServiceImpl implements TransportService {
 	@Override
 	public void deleteByRegistrationNumber(String regNumber) {
 		transportDao.deleteByRegistrationNumber(regNumber);
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime())
-				+ " Transport with reg. number " + regNumber + " deleted");
+
 	}
 
 	@Override
@@ -68,7 +63,17 @@ public class TransportServiceImpl implements TransportService {
 	}
 
 	@Override
+	public List<Transport> getAll(long first, long count, String field, String order) {
+		return transportDao.getAll(first, count, field, order);
+	}
+
+	@Override
 	public String getTypeById(Long id) {
 		return transportTypeDao.getTypeById(id);
+	}
+
+	@Override
+	public Integer getCountTransport() {
+		return transportDao.getCount();
 	}
 }

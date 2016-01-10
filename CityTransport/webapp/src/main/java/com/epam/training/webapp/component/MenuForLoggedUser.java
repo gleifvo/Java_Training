@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import com.epam.training.webapp.page.admin.DriversPage;
 import com.epam.training.webapp.page.admin.RoutesPage;
 import com.epam.training.webapp.page.admin.StopsPage;
+import com.epam.training.webapp.page.admin.TransportPage;
 import com.epam.training.webapp.page.admin.TransportTypePage;
 import com.epam.training.webapp.page.home.HomePage;
 
@@ -44,7 +45,7 @@ public class MenuForLoggedUser extends Panel {
 
 		add(new AdminPage("stops-page", StopsPage.class));
 
-		add(new AdminPage("transport-page", StopsPage.class));
+		add(new AdminPage("transport-page", TransportPage.class));
 		
 		add(new AdminPage("transport-type-page", TransportTypePage.class));
 

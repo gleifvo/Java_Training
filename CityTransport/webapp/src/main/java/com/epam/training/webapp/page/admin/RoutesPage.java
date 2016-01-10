@@ -20,7 +20,6 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
-import com.epam.training.dataaccess.model.Driver;
 import com.epam.training.dataaccess.model.Route;
 import com.epam.training.services.RouteService;
 import com.epam.training.webapp.component.MenuForLoggedUser;

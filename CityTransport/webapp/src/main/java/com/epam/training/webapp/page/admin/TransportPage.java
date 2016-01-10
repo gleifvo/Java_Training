@@ -20,19 +20,19 @@ import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
-import com.epam.training.dataaccess.model.Driver;
-import com.epam.training.services.DriverService;
+import com.epam.training.services.TransportService;
 import com.epam.training.webapp.component.MenuForLoggedUser;
 import com.epam.training.webapp.component.PanelForLoggedUser;
 import com.epam.training.webapp.page.AbstractPage;
+import com.epam.training.webapp.renderer.TransportRenderer;
 
 @AuthorizeInstantiation(value = { "admin" })
-public class DriversPage extends AbstractPage {
+public class TransportPage extends AbstractPage {
 
 	@Inject
-	private DriverService driverService;
+	private TransportService transportService;
 
-	public DriversPage() {
+	public TransportPage() {
 		super();
 	}
 
@@ -47,32 +47,33 @@ public class DriversPage extends AbstractPage {
 		webMarkupContainer.setOutputMarkupId(true);
 		add(webMarkupContainer);
 
-		DriversDataProvider usersDataProvider = new DriversDataProvider();
+		TransportDataProvider usersDataProvider = new TransportDataProvider();
 
 		int quantityElementsInTable = 10;
 
-		final DataView<Driver> dataView = new DataView<Driver>("drivers-list",
-				usersDataProvider, quantityElementsInTable) {
+		final DataView<TransportRenderer> dataView = new DataView<TransportRenderer>(
+				"transport-list", usersDataProvider, quantityElementsInTable) {
 
 			@Override
-			protected void populateItem(Item<Driver> item) {
+			protected void populateItem(Item<TransportRenderer> item) {
 
-				final Driver driver = item.getModelObject();
+				final TransportRenderer transport = item.getModelObject();
 				item.add(new Label("id"));
-				item.add(new Label("firstName"));
-				item.add(new Label("lastName"));
-				item.add(new Label("age"));
+				item.add(new Label("registrationNumber"));
+				item.add(new Label("type"));
+				item.add(new Label("routeId"));
 
 				item.add(new Link("edit-link") {
 					@Override
 					public void onClick() {
-						setResponsePage(new DriverEditPage(driver));
+						setResponsePage(new TransportEditPage(transport));
 					}
 				});
 				item.add(new Link("delete-link") {
 					@Override
 					public void onClick() {
-						driverService.deleteDriver(driver.getId());
+						transportService.deleteByRegistrationNumber(
+								transport.getRegistrationNumber());
 					}
 				});
 
@@ -81,12 +82,11 @@ public class DriversPage extends AbstractPage {
 
 		webMarkupContainer.add(dataView);
 
-		webMarkupContainer.add(new Link("add-link") {
+		webMarkupContainer.add(new Link<Void>("add-link") {
 
 			@Override
 			public void onClick() {
-				setResponsePage(new DriverEditPage());
-
+				setResponsePage(new TransportEditPage());
 			}
 
 		});
@@ -109,8 +109,8 @@ public class DriversPage extends AbstractPage {
 					}
 				});
 
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortfName",
-				"first_name", usersDataProvider) {
+		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortRegNumber",
+				"registration_number", usersDataProvider) {
 			@Override
 			protected void onSortChanged() {
 				dataView.setCurrentPage(0);
@@ -123,8 +123,8 @@ public class DriversPage extends AbstractPage {
 			}
 		});
 
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortlName",
-				"last_name", usersDataProvider) {
+		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortType",
+				"type_id", usersDataProvider) {
 
 			@Override
 			protected void onSortChanged() {
@@ -140,8 +140,8 @@ public class DriversPage extends AbstractPage {
 
 		});
 
-		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortAge", "age",
-				usersDataProvider) {
+		webMarkupContainer.add(new AjaxFallbackOrderByBorder<Object>("sortNumber",
+				"route_id", usersDataProvider) {
 
 			@Override
 			protected void onSortChanged() {
@@ -159,32 +159,35 @@ public class DriversPage extends AbstractPage {
 
 	}
 
-	private class DriversDataProvider extends SortableDataProvider<Driver, Object> {
+	private class TransportDataProvider
+			extends SortableDataProvider<TransportRenderer, Object> {
 
-		public DriversDataProvider() {
+		public TransportDataProvider() {
 			super();
 			setSort("id", SortOrder.ASCENDING);
 		}
 
 		@Override
-		public Iterator<? extends Driver> iterator(long first, long count) {
+		public Iterator<? extends TransportRenderer> iterator(long first, long count) {
 
 			SortParam<Object> sort = getSort();
 			ISortState<Object> sortState = getSortState();
 			SortOrder currentSort = sortState.getPropertySortOrder(sort.getProperty());
 
-			return driverService.getAll(first, count, sort.getProperty().toString(),
-					currentSort.toString()).iterator();
+			return TransportRenderer
+					.convert(transportService.getAll(first, count,
+							sort.getProperty().toString(), currentSort.toString()))
+					.iterator();
 		}
 
 		@Override
 		public long size() {
-			return driverService.getCountDrivers();
+			return transportService.getCountTransport();
 
 		}
 
 		@Override
-		public IModel<Driver> model(Driver object) {
+		public IModel<TransportRenderer> model(TransportRenderer object) {
 			return new CompoundPropertyModel<>(object);
 		}
 

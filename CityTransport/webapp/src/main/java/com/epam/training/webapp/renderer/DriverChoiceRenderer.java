@@ -3,7 +3,6 @@ package com.epam.training.webapp.renderer;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 
 import com.epam.training.dataaccess.model.Driver;
-import com.epam.training.dataaccess.model.User;
 
 public class DriverChoiceRenderer extends ChoiceRenderer<Driver> {
 

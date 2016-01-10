@@ -19,36 +19,40 @@ import com.epam.training.dataaccess.model.Driver;
 import com.epam.training.dataaccess.model.Transport;
 import com.epam.training.services.DriverService;
 import com.epam.training.services.TransportService;
+import com.epam.training.services.TransportTypeService;
 import com.epam.training.webapp.component.MenuForLoggedUser;
 import com.epam.training.webapp.component.PanelForLoggedUser;
 import com.epam.training.webapp.page.AbstractPage;
-import com.epam.training.webapp.renderer.TransportChoiceRenderer;
+import com.epam.training.webapp.renderer.DriverChoiceRenderer;
 import com.googlecode.wicket.jquery.ui.form.palette.Palette;
 
 @AuthorizeInstantiation(value = { "admin" })
-public class DriverEditPage extends AbstractPage {
+public class TransportEditPage extends AbstractPage {
 
-	private List<Transport> transportList = new ArrayList<Transport>();
-	private List<Transport> selectedTransport = new ArrayList<Transport>();
-
-	@Inject
-	private DriverService driverService;
+	private List<Driver> driversList = new ArrayList<Driver>();
+	private List<Driver> selectedDrivers = new ArrayList<Driver>();
 
 	@Inject
 	private TransportService transportService;
 
-	private Driver driver = new Driver();
+	@Inject
+	private TransportTypeService transportTypeService;
+
+	@Inject
+	private DriverService driverService;
+
+	private Transport transport = new Transport();
 
 	private boolean isNew;
 
-	public DriverEditPage() {
-		this(new Driver());
+	public TransportEditPage() {
+		this(new Transport());
 		isNew = true;
 	}
 
-	public DriverEditPage(Driver driver) {
+	public TransportEditPage(Transport transport) {
 		super();
-		this.driver = driver;
+		this.transport = transport;
 		isNew = false;
 	}
 
@@ -60,22 +64,23 @@ public class DriverEditPage extends AbstractPage {
 		add(new MenuForLoggedUser("menu"));
 		add(new FeedbackPanel("feedback"));
 
-		Form<Driver> form = new Form<>("form", new CompoundPropertyModel<>(driver));
+		Form<Transport> form = new Form<>("form", new CompoundPropertyModel<>(transport));
 		add(form);
 
-		form.add(new TextField<String>("firstName"));
-		form.add(new TextField<String>("lastName"));
-		form.add(new TextField<String>("age"));
+		form.add(new TextField<String>("registrationNumber"));
+		form.add(new TextField<String>("typeId"));
+		form.add(new TextField<String>("routeId"));
 
-		IChoiceRenderer<Transport> renderer = new TransportChoiceRenderer();
+		IChoiceRenderer<Driver> renderer = new DriverChoiceRenderer();
 
-		selectedTransport = driverService.getDriverTransports(driver.getId());
+		selectedDrivers = driverService
+				.getDriversByRegNumber(transport.getRegistrationNumber());
 
-		transportList = transportService.getAll();
+		driversList = driverService.getAll();
 
-		final Palette<Transport> palette = new Palette<Transport>("palette",
-				new ListModel<Transport>(selectedTransport),
-				new CollectionModel<Transport>(transportList), renderer, 10, false);
+		final Palette<Driver> palette = new Palette<Driver>("palette",
+				new ListModel<Driver>(selectedDrivers),
+				new CollectionModel<Driver>(driversList), renderer, 10, false);
 
 		form.add(palette);
 
@@ -84,22 +89,23 @@ public class DriverEditPage extends AbstractPage {
 			public void onSubmit() {
 
 				if (isNew) {
-					driverService.add(driver);
+					transportService.addTransport(transport);
 				} else {
-					driverService.update(driver);
+					transportService.updateTransport(transport);
 				}
 
-				transportList.removeAll(selectedTransport);
+				driversList.removeAll(selectedDrivers);
 
-				for (Transport transport : transportList) {
+				for (Driver driver : driversList) {
+
 					driverService.deleteTransport(transport.getId(), driver.getId());
 				}
 
-				for (Transport transport : selectedTransport) {
+				for (Driver driver : selectedDrivers) {
 					driverService.addTransport(transport.getId(), driver.getId());
 				}
 
-				setResponsePage(new DriversPage());
+				setResponsePage(new TransportPage());
 
 			}
 		});

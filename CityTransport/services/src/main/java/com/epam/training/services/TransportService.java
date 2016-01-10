@@ -22,4 +22,8 @@ public interface TransportService {
 	
 	String getTypeById(Long id);
 
+	List<Transport> getAll(long first, long count, String field, String order);
+
+	Integer getCountTransport();
+
 }
