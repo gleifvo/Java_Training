@@ -22,11 +22,11 @@ public class TransportTypeServiceTest extends AbstractSpringTest {
 
 		randomfilling(transportType);
 
-		transportTypeService.addTransportType(transportType);
+		transportTypeService.add(transportType);
 
 		randomfilling(transportType);
 
-		transportTypeService.updateTransportType(transportType);
+		transportTypeService.update(transportType);
 
 		Assert.assertTrue(transportTypeService.getAll().contains(transportType));
 

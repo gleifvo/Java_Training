@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.panel.Panel;
 import com.epam.training.webapp.page.admin.DriversPage;
 import com.epam.training.webapp.page.admin.RoutesPage;
 import com.epam.training.webapp.page.admin.StopsPage;
+import com.epam.training.webapp.page.admin.TransportTypePage;
 import com.epam.training.webapp.page.home.HomePage;
 
 public class MenuForLoggedUser extends Panel {
@@ -37,20 +38,15 @@ public class MenuForLoggedUser extends Panel {
 			}
 		});
 
-		BookmarkablePageLink<Void> driversPage = new AdminPage("drivers-page",
-				DriversPage.class);
+		add(new AdminPage("drivers-page", DriversPage.class));
 
-		add(driversPage);
+		add(new AdminPage("routes-page", RoutesPage.class));
 
-		BookmarkablePageLink<Void> routesPage = new AdminPage("routes-page",
-				RoutesPage.class);
+		add(new AdminPage("stops-page", StopsPage.class));
 
-		add(routesPage);
+		add(new AdminPage("transport-page", StopsPage.class));
 		
-		BookmarkablePageLink<Void> stopsPage = new AdminPage("stops-page",
-				StopsPage.class);
-
-		add(stopsPage);
+		add(new AdminPage("transport-type-page", TransportTypePage.class));
 
 	}
 

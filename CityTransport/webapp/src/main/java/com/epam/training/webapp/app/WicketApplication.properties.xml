@@ -34,5 +34,9 @@
 	<entry key="num">Number</entry>
 	<entry key="name">Name</entry>
 	<entry key="stops">Stops</entry>
+	<entry key="transport">Transport</entry>
+	<entry key="transport-type">Transport type</entry>
+	<entry key="capacity">Capacity</entry>
+	<entry key="max-speed">Max speed</entry>
 
 </properties>

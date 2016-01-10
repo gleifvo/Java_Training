@@ -1,11 +1,7 @@
 package com.epam.training.services.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,24 +12,17 @@ import com.epam.training.services.TransportTypeService;
 @Service
 public class TransportTypeServiceImpl implements TransportTypeService {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(TransportTypeServiceImpl.class);
-
 	@Autowired
 	private TransportTypeDao transportTypeDao;
 
 	@Override
-	public void addTransportType(TransportType transportType) {
+	public void add(TransportType transportType) {
 		transportType.setId(transportTypeDao.insert(transportType));
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
-				+ transportType.toString() + " added");
 	}
 
 	@Override
-	public void updateTransportType(TransportType transportType) {
+	public void update(TransportType transportType) {
 		transportTypeDao.update(transportType);
-		LOGGER.info(new SimpleDateFormat().format(new Date().getTime()) + " "
-				+ transportType.toString() + " updated");
 	}
 
 	@Override
@@ -45,4 +34,21 @@ public class TransportTypeServiceImpl implements TransportTypeService {
 	public List<TransportType> getAll() {
 		return transportTypeDao.getAll();
 	}
+
+	@Override
+	public List<TransportType> getAll(long first, long count, String field,
+			String order) {
+		return transportTypeDao.getAll(first, count, field, order);
+	}
+
+	@Override
+	public Integer getCountTypes() {
+		return transportTypeDao.getCount();
+	}
+
+	@Override
+	public void delete(Long id) {
+		transportTypeDao.deleteById(id);
+	}
+
 }

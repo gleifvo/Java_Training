@@ -34,7 +34,11 @@
 	<entry key="num">Номер</entry>
 	<entry key="name">Название</entry>
 	<entry key="stops">Остановки</entry>
-	
+	<entry key="transport">Транспорт</entry>
+	<entry key="transport-type">Тип транспорта</entry>
+	<entry key="capacity">Вместимость</entry>
+	<entry key="max-speed">Макс. Скорость</entry>
+
 
 
 </properties>
