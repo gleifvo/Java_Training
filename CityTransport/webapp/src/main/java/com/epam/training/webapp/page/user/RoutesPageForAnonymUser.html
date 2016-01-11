@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+	<style>
+.table.routesList, tr:hover td {
+	background-color: #A9B4B7;
+}
+</style>
+
+	<table class="routesList">
+
+
+
+		<thead>
+			<tr>
+				<th><h2>
+						<wicket:message key="num" />
+					</h2></th>
+				<th><h2>
+						<wicket:message key="interval" />
+					</h2></th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr wicket:id="routes-list">
+
+				<td><h2 wicket:id="id"></h2></td>
+				<td><h2 wicket:id="interval"></h2></td>
+				<wicket:child />
+
+			</tr>
+		</tbody>
+
+	</table>
+
+
+</wicket:extend>

@@ -21,4 +21,8 @@ public interface UserService {
 	
 	List<User> getAll(long first, long count,String field,String order);
 
+	void addRoute(Long userId, Long routeId);
+
+	void deleteRoute(Long userId, Long routeId);
+
 }

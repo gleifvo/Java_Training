@@ -20,10 +20,13 @@ public class RouteToUserDaoImpl implements RouteToUserDao {
 
 	@Override
 	public void insert(RouteToUser routeRoUser) {
+
 		try {
-			jdbcTemplate.update("INSERT INTO route_2user (route_id,stop_id) VALUES(?,?)",
+			jdbcTemplate.update("INSERT INTO route_2user (route_id, user_id) VALUES(?,?)",
 					routeRoUser.getRouteId(), routeRoUser.getUserId());
-		} catch (DataAccessException e) {
+		} catch (DataAccessException e)
+
+		{
 		}
 
 	}

@@ -10,6 +10,7 @@ import com.epam.training.dataaccess.dao.RouteToUserDao;
 import com.epam.training.dataaccess.dao.UserDao;
 import com.epam.training.dataaccess.dao.UserTypeDao;
 import com.epam.training.dataaccess.model.Route;
+import com.epam.training.dataaccess.model.RouteToUser;
 import com.epam.training.dataaccess.model.User;
 import com.epam.training.services.UserService;
 
@@ -71,6 +72,17 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String getRole(Long id) {
 		return userTypeDao.getById(id).getType();
+	}
+
+	@Override
+	public void addRoute(Long userId, Long routeId) {
+		routeToUserDao.insert(new RouteToUser(userId, routeId));
+
+	}
+
+	@Override
+	public void deleteRoute(Long userId, Long routeId) {
+		routeToUserDao.deleteEntry(routeId, userId);
 	}
 
 }

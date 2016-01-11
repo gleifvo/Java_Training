@@ -11,6 +11,8 @@ import com.epam.training.webapp.page.admin.StopsPage;
 import com.epam.training.webapp.page.admin.TransportPage;
 import com.epam.training.webapp.page.admin.TransportTypePage;
 import com.epam.training.webapp.page.home.HomePage;
+import com.epam.training.webapp.page.user.FavoriteRoutesPageForLoggedUser;
+import com.epam.training.webapp.page.user.RoutesPageForLoggedUser;
 
 public class MenuForLoggedUser extends Panel {
 
@@ -27,7 +29,7 @@ public class MenuForLoggedUser extends Panel {
 
 			@Override
 			public void onClick() {
-				setResponsePage(HomePage.class);
+				setResponsePage(RoutesPageForLoggedUser.class);
 			}
 		});
 
@@ -35,7 +37,7 @@ public class MenuForLoggedUser extends Panel {
 
 			@Override
 			public void onClick() {
-				setResponsePage(HomePage.class);
+				setResponsePage(FavoriteRoutesPageForLoggedUser.class);
 			}
 		});
 
@@ -46,7 +48,7 @@ public class MenuForLoggedUser extends Panel {
 		add(new AdminPage("stops-page", StopsPage.class));
 
 		add(new AdminPage("transport-page", TransportPage.class));
-		
+
 		add(new AdminPage("transport-type-page", TransportTypePage.class));
 
 	}

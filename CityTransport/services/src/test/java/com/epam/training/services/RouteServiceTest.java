@@ -24,7 +24,7 @@ public class RouteServiceTest extends AbstractSpringTest {
 	public void sheduleTest() {
 
 		route.setId(15L);
-		route.setInterval(9);
+		route.setInterval(45);
 		Map<Stop, Map<Integer, List<Integer>>> schedule = routeService.getSchedule(route);
 
 		for (Entry<Stop, Map<Integer, List<Integer>>> entry : schedule.entrySet()) {

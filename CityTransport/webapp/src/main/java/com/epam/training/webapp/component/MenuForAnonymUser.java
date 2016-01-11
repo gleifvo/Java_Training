@@ -4,6 +4,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
 import com.epam.training.webapp.page.home.HomePage;
+import com.epam.training.webapp.page.user.RoutesPageForAnonymUser;
+import com.epam.training.webapp.page.user.RoutesPageForLoggedUser;
 
 public class MenuForAnonymUser extends Panel {
 
@@ -15,7 +17,7 @@ public class MenuForAnonymUser extends Panel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
-		
+
 		add(new Link<Void>("btn-home") {
 
 			@Override
@@ -23,12 +25,12 @@ public class MenuForAnonymUser extends Panel {
 				setResponsePage(HomePage.class);
 			}
 		});
-		
+
 		add(new Link<Void>("btn-shedule") {
 
 			@Override
 			public void onClick() {
-				setResponsePage(HomePage.class);
+				setResponsePage(RoutesPageForAnonymUser.class);
 			}
 		});
 	}

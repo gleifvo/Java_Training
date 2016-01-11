@@ -80,6 +80,7 @@ public class RouteServiceImpl implements RouteService {
 
 	@Override
 	public Map<Stop, Map<Integer, List<Integer>>> getSchedule(Route route) {
+
 		int startWorkingTime = 6;
 
 		int endWorkingTime = 22;
@@ -87,11 +88,22 @@ public class RouteServiceImpl implements RouteService {
 		Integer interval = route.getInterval();
 
 		Map<Stop, Map<Integer, List<Integer>>> schedule = new LinkedHashMap<>();
+
 		List<Stop> stops = getStops(route);
+
+		int minutesPerHour = 60;
+
 		Integer minutes = 0;
+
 		Map<Integer, List<Integer>> timeMap = new LinkedHashMap<>();
 
 		for (Stop stop : stops) {
+
+			timeMap = new LinkedHashMap<>();
+
+			int stopNumber = stops.indexOf(stop);
+
+			minutes = interval * stopNumber;
 
 			for (int hour = startWorkingTime; hour < endWorkingTime; hour++) {
 
@@ -99,8 +111,8 @@ public class RouteServiceImpl implements RouteService {
 
 				for (int min = minutes;; min += interval) {
 
-					if (min / 60 != 0) {
-						minutes = min%60;
+					if (min / minutesPerHour != 0) {
+						minutes = min % minutesPerHour;
 						break;
 					}
 
@@ -109,6 +121,7 @@ public class RouteServiceImpl implements RouteService {
 				timeMap.put(hour, minutesList);
 
 			}
+
 			schedule.put(stop, timeMap);
 		}
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<wicket:extend xmlns:wicket="http://wicket.apache.org">
+
+	<style>
+.table.stopsList, tr:hover td {
+	background-color: #A9B4B7;
+}
+</style>
+	<table clas="stopsList">
+
+		<thead>
+			<tr>
+				<th><h2>
+
+						<wicket:message key="name" />
+					</h2></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr wicket:id="stops-list">
+				<td><h2 wicket:id="name"></h2></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<wicket:child />
+
+</wicket:extend>
