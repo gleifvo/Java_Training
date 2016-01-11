@@ -33,9 +33,10 @@ public class LanguageSelectionComponent extends Panel {
 			Locale locale = Session.get().getLocale();
 			String lang = locale == null ? null : locale.getLanguage();
 			if (getId().equals(lang)) {
-				add(AttributeModifier.append("style", "background:grey"));
+				add(AttributeModifier.append("style", "background:grey;"));
 			} else {
 				add(AttributeModifier.remove("style"));
+
 			}
 		}
 

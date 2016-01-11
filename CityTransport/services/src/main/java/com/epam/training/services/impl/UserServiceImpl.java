@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.epam.training.dataaccess.dao.RouteToUserDao;
 import com.epam.training.dataaccess.dao.UserDao;
 import com.epam.training.dataaccess.dao.UserTypeDao;
+import com.epam.training.dataaccess.model.Route;
 import com.epam.training.dataaccess.model.User;
 import com.epam.training.services.UserService;
 
@@ -20,13 +22,16 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserTypeDao userTypeDao;
 
+	@Autowired
+	private RouteToUserDao routeToUserDao;
+
 	private String defaultUserType = "user";
 
 	@Override
 	public boolean authenticate(User user) {
 		try {
 			User newUser = userDao.getByLogin(user.getLogin());
-			
+
 			if (user.getPassword().equals(newUser.getPassword())) {
 				user.setId(newUser.getId());
 				user.setUserTypeId(newUser.getUserTypeId());
@@ -48,6 +53,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAll() {
 		return userDao.getAll();
+	}
+
+	@Override
+	public List<Route> getUserRoutes(Long userId) {
+		return routeToUserDao.getUserFavorite(userId);
 	}
 
 	public List<User> getAll(long first, long count) {

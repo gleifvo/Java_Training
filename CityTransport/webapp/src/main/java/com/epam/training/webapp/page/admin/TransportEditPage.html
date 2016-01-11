@@ -20,7 +20,29 @@
 .palette {
 	margin: 10px 0 22px 22px;
 }
+
+.k-input {
+	background-color: white;
+}
+
+.k-item {
+	background-color: white;
+	color: black;
+}
+
+.k-item:hover {
+	background-color: black;
+	color: white;
+}
+
+.k-icon, .k-i-arrow-s {
+	overflow: hidden;
+	background-color: white;
+	color: white;
+	background-image: url("/img/drop-arrow.gif");
+}
 </style>
+
 	<form wicket:id="form">
 		<table>
 
@@ -36,14 +58,14 @@
 						<wicket:message key="transport-type" />
 						:
 					</h2></td>
-				<td><input wicket:id="typeId" type="text" /></td>
+				<td><select wicket:id="selectType"></select></td>
 			</tr>
 			<tr>
 				<td><h2>
 						<wicket:message key="num" />
 						:
 					</h2></td>
-				<td><input wicket:id="routeId" type="text" /></td>
+					<td><select wicket:id="selectRoute"></select></td>
 			</tr>
 
 			<br />

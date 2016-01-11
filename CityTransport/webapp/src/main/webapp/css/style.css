@@ -65,14 +65,22 @@ margin: 0 0 0 175px;
 }
 
 
-.btn {
+
+.btn, .btn-menu{
   color: white;
   background: black;
   font-weight: bold;
-
 }
- 
-.btn:hover {
+
+.btn-menu{
+ width:90%;
+ padding: 5px;
+}
+
+
+
+
+.btn:hover,.btn-menu:hover {
   color: black;
   background: white;
 }
@@ -207,6 +215,37 @@ background: url('.img/bullet.gif') no-repeat 0 0;
 padding-left: 27px;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

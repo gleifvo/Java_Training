@@ -11,7 +11,6 @@ import com.epam.training.webapp.app.CustomSession;
 import com.epam.training.webapp.component.MenuForAnonymUser;
 import com.epam.training.webapp.component.PanelForAnonymUser;
 import com.epam.training.webapp.page.AbstractPage;
-import com.epam.training.webapp.page.admin.DriversPage;
 import com.epam.training.webapp.page.user.UsersPage;
 
 public class LoginPage extends AbstractPage {

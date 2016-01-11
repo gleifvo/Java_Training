@@ -72,8 +72,7 @@ public class TransportPage extends AbstractPage {
 				item.add(new Link("delete-link") {
 					@Override
 					public void onClick() {
-						transportService.deleteByRegistrationNumber(
-								transport.getRegistrationNumber());
+						transportService.delete(transport.getId());
 					}
 				});
 

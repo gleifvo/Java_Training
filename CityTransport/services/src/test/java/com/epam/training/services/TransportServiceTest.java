@@ -42,7 +42,7 @@ public class TransportServiceTest extends AbstractSpringTest {
 
 		transportService.updateTransport(transport);
 
-		transportService.deleteByRegistrationNumber(transport.getRegistrationNumber());
+		transportService.delete(transport.getId());
 	}
 
 	private void randomfilling(List<TransportType> types, List<Route> routes) {

@@ -2,6 +2,7 @@ package com.epam.training.services;
 
 import java.util.List;
 
+import com.epam.training.dataaccess.model.Route;
 import com.epam.training.dataaccess.model.User;
 
 public interface UserService {
@@ -11,6 +12,8 @@ public interface UserService {
 	String getRole(Long id);
 
 	void registrationUser(User user);
+	
+	List<Route> getUserRoutes(Long userId);
 
 	List<User> getAll();
 

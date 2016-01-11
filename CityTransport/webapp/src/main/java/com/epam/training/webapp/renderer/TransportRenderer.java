@@ -21,7 +21,10 @@ public class TransportRenderer extends Transport {
 		for (Transport transport : list) {
 			newList.add(new TransportRenderer(transport));
 		}
+		
 		return newList;
+		
+		
 	}
 
 	public TransportRenderer() {
