@@ -95,7 +95,9 @@ public class TransportEditPage extends AbstractPage {
 		Form<Transport> form = new Form<>("form", new CompoundPropertyModel<>(transport));
 		add(form);
 
-		form.add(new TextField<String>("registrationNumber"));
+		TextField<String> textField = new TextField<String>("registrationNumber");
+		textField.setRequired(true);
+		form.add(textField);
 
 		final DropDownChoice<Long> listRoutes = new DropDownChoice<Long>("selectRoute",
 				new PropertyModel<Long>(this, "selectedId"), routes);

@@ -11,12 +11,12 @@
 	<entry key="lang">Language:</entry>
 	<entry key="liked">My Favorites</entry>
 	<entry key="drivers">Drivers</entry>
-	<entry key="fName">First name</entry>
-	<entry key="lName">Last name</entry>
+	<entry key="firstName">First name</entry>
+	<entry key="lastName">Last name</entry>
 	<entry key="age">Age</entry>
 	<entry key="register">Registry new user</entry>
 	<entry key="edit">Edit</entry>
-	<entry key="confirm">Confirm</entry>
+	<entry key="confirm-password">Confirm password</entry>
 	<entry key="login">Login</entry>
 	<entry key="log-in">Login</entry>
 	<entry key="password">Password</entry>
@@ -35,12 +35,15 @@
 	<entry key="name">Name</entry>
 	<entry key="stops">Stops</entry>
 	<entry key="transport">Transport</entry>
-	<entry key="transport-type">Transport type</entry>
+	<entry key="transportType">Transport type</entry>
 	<entry key="capacity">Capacity</entry>
-	<entry key="max-speed">Max speed</entry>
-	<entry key="reg-num">Registration number</entry>
+	<entry key="maxSpeed">Max speed</entry>
+	<entry key="registrationNumber">Registration number</entry>
 	<entry key="hour">Hours</entry>
 	<entry key="minutes">Minutes</entry>
+	<entry key="passEror">Passwords doesn't match </entry>
+
+
 
 
 

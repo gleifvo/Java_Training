@@ -63,7 +63,9 @@ public class RouteEditPage extends AbstractPage {
 		Form<Route> form = new Form<>("form", new CompoundPropertyModel<>(route));
 		add(form);
 
-		form.add(new TextField<String>("interval"));
+		TextField<String> textField = new TextField<String>("interval");
+		textField.setRequired(true);
+		form.add(textField);
 
 		IChoiceRenderer<Stop> renderer = new ChoiceRenderer<Stop>("name", "id");
 

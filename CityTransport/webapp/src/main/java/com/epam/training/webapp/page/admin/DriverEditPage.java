@@ -63,9 +63,15 @@ public class DriverEditPage extends AbstractPage {
 		Form<Driver> form = new Form<>("form", new CompoundPropertyModel<>(driver));
 		add(form);
 
-		form.add(new TextField<String>("firstName"));
-		form.add(new TextField<String>("lastName"));
-		form.add(new TextField<String>("age"));
+		TextField<String> firstNameField = new TextField<String>("firstName");
+		firstNameField.setRequired(true);
+		form.add(firstNameField);
+		TextField<String> lastNameField = new TextField<String>("lastName");
+		lastNameField.setRequired(true);
+		form.add(lastNameField);
+		TextField<String> ageField = new TextField<String>("age");
+		ageField.setRequired(true);
+		form.add(ageField);
 
 		IChoiceRenderer<Transport> renderer = new TransportChoiceRenderer();
 

@@ -49,7 +49,9 @@ public class StopEditPage extends AbstractPage {
 		Form<Stop> form = new Form<>("form", new CompoundPropertyModel<>(stop));
 		add(form);
 
-		form.add(new TextField<String>("name"));
+		TextField<String> textField = new TextField<String>("name");
+		textField.setRequired(true);
+		form.add(textField);
 
 		IChoiceRenderer<Stop> renderer = new ChoiceRenderer<Stop>("name", "id");
 

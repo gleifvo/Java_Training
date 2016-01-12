@@ -20,8 +20,6 @@
 .palette {
 	margin: 10px 0 22px 22px;
 }
-
-
 </style>
 
 	<form wicket:id="form">
@@ -29,14 +27,14 @@
 
 			<tr>
 				<td><h2>
-						<wicket:message key="reg-num" />
+						<wicket:message key="registrationNumber" />
 						:
 					</h2></td>
 				<td><input wicket:id="registrationNumber" type="text" /></td>
 			</tr>
 			<tr>
 				<td><h2>
-						<wicket:message key="transport-type" />
+						<wicket:message key="transportType" />
 						:
 					</h2></td>
 				<td><select wicket:id="selectType"></select></td>
@@ -46,7 +44,7 @@
 						<wicket:message key="num" />
 						:
 					</h2></td>
-					<td><select wicket:id="selectRoute"></select></td>
+				<td><select wicket:id="selectRoute"></select></td>
 			</tr>
 
 			<br />
@@ -63,5 +61,7 @@
 			</tr>
 		</table>
 	</form>
-	<div wicket:id="feedback"></div>
+	<h2>
+		<div wicket:id="feedback"></div>
+	</h2>
 </wicket:extend>

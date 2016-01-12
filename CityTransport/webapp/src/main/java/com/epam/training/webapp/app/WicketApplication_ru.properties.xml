@@ -11,12 +11,12 @@
 	<entry key="lang">Язык:</entry>
 	<entry key="liked">Избранное</entry>
 	<entry key="drivers">Водители</entry>
-	<entry key="fName">Имя</entry>
-	<entry key="lName">Фамилия</entry>
+	<entry key="firstName">Имя</entry>
+	<entry key="lastName">Фамилия</entry>
 	<entry key="age">Возраст</entry>
 	<entry key="register">Регистрация нового пользователя</entry>
 	<entry key="edit">Редактировать</entry>
-	<entry key="confirm">Подтвердите</entry>
+	<entry key="confirm-password">Подтвердите пароль</entry>
 	<entry key="login">Логин</entry>
 	<entry key="log-in">Войти</entry>
 	<entry key="password">Пароль</entry>
@@ -35,12 +35,14 @@
 	<entry key="name">Название</entry>
 	<entry key="stops">Остановки</entry>
 	<entry key="transport">Транспорт</entry>
-	<entry key="transport-type">Тип транспорта</entry>
+	<entry key="transportType">Тип транспорта</entry>
 	<entry key="capacity">Вместимость</entry>
-	<entry key="max-speed">Макс. Скорость</entry>
-	<entry key="reg-num">Регистрационный номер</entry>
+	<entry key="maxSpeed">Макс. Скорость</entry>
+	<entry key="registrationNumber">Регистрационный номер</entry>
 	<entry key="hour">Часы</entry>
 	<entry key="minutes">Минуты</entry>
+	<entry key="passEror">Пароли не совпадают</entry>
+
 
 
 

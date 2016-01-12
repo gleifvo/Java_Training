@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 
@@ -15,6 +16,7 @@ import com.epam.training.webapp.component.MenuForAnonymUser;
 import com.epam.training.webapp.component.PanelForAnonymUser;
 import com.epam.training.webapp.page.AbstractPage;
 import com.epam.training.webapp.page.home.HomePage;
+import com.epam.training.webapp.page.login.LoginPage;
 
 public class UserRegisterPage extends AbstractPage {
 
@@ -27,6 +29,7 @@ public class UserRegisterPage extends AbstractPage {
 
 		add(new PanelForAnonymUser("menu-panel"));
 		add(new MenuForAnonymUser("menu"));
+		add(new FeedbackPanel("feedbackPanel"));
 
 		final User newUser = new User();
 
@@ -50,9 +53,9 @@ public class UserRegisterPage extends AbstractPage {
 				if (newUser.getPassword()
 						.equals(confirmPasswordField.getDefaultModelObject())) {
 					userService.registrationUser(newUser);
-					setResponsePage(new HomePage());
+					setResponsePage(new LoginPage());
 				} else {
-					setResponsePage(new UserRegisterPage());
+					info(getString("passEror"));
 				}
 			}
 		});

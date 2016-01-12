@@ -28,9 +28,10 @@ public class LoginPage extends AbstractPage {
 		final Model<String> passModel = new Model(null);
 
 		TextField<String> loginTf = new TextField<String>("login", loginModel);
+		loginTf.setRequired(true);
 		form.add(loginTf);
 
-		TextField<String> passTf = new PasswordTextField("pass", passModel);
+		TextField<String> passTf = new PasswordTextField("password", passModel);
 		form.add(passTf);
 
 		add(form);

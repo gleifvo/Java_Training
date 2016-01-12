@@ -48,9 +48,15 @@ public class TransportTypeEditPage extends AbstractPage {
 				new CompoundPropertyModel<>(transportType));
 		add(form);
 
-		form.add(new TextField<String>("transportType"));
-		form.add(new TextField<String>("capacity"));
-		form.add(new TextField<String>("maxSpeed"));
+		TextField<String> typeField = new TextField<String>("transportType");
+		typeField.setRequired(true);
+		form.add(typeField);
+		TextField<String> capacityField = new TextField<String>("capacity");
+		capacityField.setRequired(true);
+		form.add(capacityField);
+		TextField<String> maxSpeedField = new TextField<String>("maxSpeed");
+		maxSpeedField.setRequired(true);
+		form.add(maxSpeedField);
 
 		form.add(new SubmitLink("submit-button") {
 			@Override
