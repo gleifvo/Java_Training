@@ -3,6 +3,7 @@ package com.epam.training.webapp.page.user;
 import javax.inject.Inject;
 
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
@@ -35,10 +36,10 @@ public class UserRegisterPage extends AbstractPage {
 		form.add(new TextField<String>("login",
 				new PropertyModel<String>(newUser, "login")));
 
-		form.add(new TextField<String>("password",
+		form.add(new PasswordTextField("password",
 				new PropertyModel<String>(newUser, "password")));
 
-		final TextField<String> confirmPasswordField = new TextField<String>(
+		final TextField<String> confirmPasswordField = new PasswordTextField(
 				"confirm-password", new Model<String>());
 		form.add(confirmPasswordField);
 
