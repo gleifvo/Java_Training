@@ -39,6 +39,8 @@
 	<entry key="capacity">Вместимость</entry>
 	<entry key="max-speed">Макс. Скорость</entry>
 	<entry key="reg-num">Регистрационный номер</entry>
+	<entry key="hour">Часы</entry>
+	<entry key="minutes">Минуты</entry>
 
 
 

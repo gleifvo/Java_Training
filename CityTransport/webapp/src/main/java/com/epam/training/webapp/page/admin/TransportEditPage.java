@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.markup.html.form.SubmitLink;
@@ -13,6 +14,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.CollectionModel;
 import org.apache.wicket.model.util.ListModel;
 
@@ -49,7 +51,7 @@ public class TransportEditPage extends AbstractPage {
 	@Inject
 	private DriverService driverService;
 
-	private Transport transport = new Transport();
+	private Transport transport;
 
 	private List<String> transportTypes = new ArrayList<String>();
 
@@ -57,14 +59,20 @@ public class TransportEditPage extends AbstractPage {
 
 	private boolean isNew;
 
+	private Long selectedId;
+
+	private String selectedType;
+
 	public TransportEditPage() {
-		this(new Transport());
 		isNew = true;
+		getTypes();
+		getRoutes();
+		transport = new Transport();
 
 	}
 
 	public TransportEditPage(Transport transport) {
-		super();
+		this();
 		this.transport = transport;
 		isNew = false;
 
@@ -78,26 +86,31 @@ public class TransportEditPage extends AbstractPage {
 		add(new MenuForLoggedUser("menu"));
 		add(new FeedbackPanel("feedback"));
 
+		if (!isNew) {
+
+			selectedDrivers = driverService
+					.getDriversByRegNumber(transport.getRegistrationNumber());
+		}
+
 		Form<Transport> form = new Form<>("form", new CompoundPropertyModel<>(transport));
 		add(form);
 
 		form.add(new TextField<String>("registrationNumber"));
 
-		getRoutes();
-		final DropDownList<Long> dropdownRoutes = new DropDownList<Long>("selectRoute",
-				new Model<Long>(), new ListModel<Long>(routes));
-		setDefaultModelForRoute(dropdownRoutes);
-		form.add(dropdownRoutes.setOutputMarkupId(true));
+		final DropDownChoice<Long> listRoutes = new DropDownChoice<Long>("selectRoute",
+				new PropertyModel<Long>(this, "selectedId"), routes);
+		setDefaultModelForRoute(listRoutes);
 
-		getTypes();
-		final DropDownList<String> dropdownTypes = new DropDownList<String>("selectType",
-				new Model<String>(), new ListModel<String>(transportTypes));
-		setDefaultModelForType(dropdownTypes);
-		form.add(dropdownTypes.setOutputMarkupId(true));
+		form.add(listRoutes);
+
+		final DropDownChoice<String> listTypes = new DropDownChoice<String>("selectType",
+				new PropertyModel<String>(this, "selectedType"), transportTypes);
+		setDefaultModelForType(listTypes);
+		add(form);
+		form.add(listTypes);
 
 		IChoiceRenderer<Driver> renderer = new DriverChoiceRenderer();
-		selectedDrivers = driverService
-				.getDriversByRegNumber(transport.getRegistrationNumber());
+
 		driversList = driverService.getAll();
 		final Palette<Driver> palette = new Palette<Driver>("palette",
 				new ListModel<Driver>(selectedDrivers),
@@ -109,9 +122,9 @@ public class TransportEditPage extends AbstractPage {
 			public void onSubmit() {
 
 				transport.setTypeId(transportTypeService
-						.getByName(dropdownTypes.getModelObject()).getId());
+						.getByName(listTypes.getModelObject()).getId());
 
-				transport.setRouteId(dropdownRoutes.getModelObject());
+				transport.setRouteId(listRoutes.getModelObject());
 
 				if (isNew) {
 					transportService.addTransport(transport);
@@ -137,8 +150,8 @@ public class TransportEditPage extends AbstractPage {
 
 	}
 
-	private void setDefaultModelForType(final DropDownList<String> dropdown) {
-		if (transport.getTypeId() != null) {
+	private void setDefaultModelForType(final DropDownChoice<String> dropdown) {
+		if (!isNew) {
 			dropdown.setDefaultModelObject(
 					transportService.getTypeById(transport.getTypeId()));
 		}
@@ -149,10 +162,10 @@ public class TransportEditPage extends AbstractPage {
 		}
 	}
 
-	private void setDefaultModelForRoute(final DropDownList<Long> dropdown) {
-		Long routeId = transport.getRouteId();
-		if (routeId != null) {
-			dropdown.setDefaultModelObject(routeId);
+	private void setDefaultModelForRoute(final DropDownChoice<Long> dropdown) {
+
+		if (!isNew) {
+			dropdown.setDefaultModelObject(transport.getRouteId());
 		}
 
 		else {

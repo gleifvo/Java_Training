@@ -39,6 +39,9 @@
 	<entry key="capacity">Capacity</entry>
 	<entry key="max-speed">Max speed</entry>
 	<entry key="reg-num">Registration number</entry>
+	<entry key="hour">Hours</entry>
+	<entry key="minutes">Minutes</entry>
+
 
 
 </properties>
